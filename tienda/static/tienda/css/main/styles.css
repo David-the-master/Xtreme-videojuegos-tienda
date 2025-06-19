@@ -1,0 +1,1360 @@
+
+
+
+:root {
+  --primary: #4361ee;
+  --nav-bg: #1a1a1a; /* Negro puro */
+  --nav-text: #ffffff; /* Texto blanco */
+  --nav-accent: #2ecc71; /* Verde esmeralda */
+  --nav-hover: #27ae60; /* Verde más oscuro */
+  --primary-dark: #3a0ca3;  
+  --secondary: #f72585;
+  --accent: #4cc9f0;
+  --dark: #14213d;
+  --light: #f8f9fa;
+  --gray: #8d99ae;
+  --success: #06d6a0;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --negro_Puro: black;
+}
+
+.offcanvas-body .nav-link {
+  color: white;
+  margin-bottom: 10px;
+}
+
+
+.quienes-somos-mobile {
+  display: none;
+}
+
+#navbar-mobile {
+  display: none;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Estructura base */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  font-size: 1.1rem; /* Respeta preferencias */
+  line-height: 1.6rem;
+  padding-top: 80px;
+  background-color: #f8f9fa;
+  color: #212529;
+
+}
+
+/* Navbar principal - Estilo negro con verde */
+/* -------------------------------------------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+
+.navbar {
+  background: var(--nav-bg) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid  #F5F5F5;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0.8rem 1.5rem;
+  transition: var(--transition);
+}
+
+/* Contenedor flexible */
+.navbar > .container-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Logo con efectos verdes */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.3rem !important;
+  color: var(--nav-text) !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  padding: 0.5rem 0;
+}
+
+.navbar-brand:hover {
+  color: var(--nav-accent) !important;
+  transform: translateY(-2px);
+}
+
+.navbar-brand img {
+  width: 80px;
+  height: 80px;
+  margin-right: 5px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.5),
+    box-shadow 0.4s ease,
+    border-color 0.3s ease;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2)); /* Sombra externa */
+}
+
+.navbar-brand:hover img {
+  transform: 
+    rotate(12deg) 
+    scale(1.08) 
+    translateY(-5px); /* Efecto "levitación" */
+  border-color: #3ef7ff; /* Azul neón (cambia el color) */
+  box-shadow: 
+    0 0 25px rgba(62, 247, 255, 0.6),
+    0 0 50px rgba(62, 247, 255, 0.3),
+    inset 0 0 15px rgba(255, 255, 255, 0.3);
+  filter: 
+    drop-shadow(0 5px 15px rgba(62, 247, 255, 0.4))
+    brightness(1.1); /* Brillo extra */
+}
+
+/* Efecto subrayado animado verde */
+.navbar-brand::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--nav-accent), var(--nav-hover));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.navbar-brand:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+
+
+/* Items del menú con efecto verde */
+.navbar-nav .nav-link {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--nav-text) !important;
+  margin: 0 0.5rem;
+  padding: 0.4rem 1.5rem;
+  border-radius: 50px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-nav .nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(46, 204, 113, 0.2), rgba(39, 174, 96, 0.2));
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50px;
+}
+
+.navbar-nav .nav-link:hover::before,
+.navbar-nav .nav-link.active::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: white ;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+.navbar-nav .nav-link i {
+  color: #ffffff !important;
+  transition: var(--transition);
+  margin-right: 10px;
+}
+
+.navbar-nav .nav-link:hover i {
+  color: var(--nav-accent);
+  transform: scale(1.1);
+}
+
+
+
+/* Aplica a todos los dropdowns dentro de la navbar */
+.navbar .dropdown-menu {
+  
+  min-width: unset; /* Quitamos el min-width por defecto de Bootstrap */
+  max-width: 250px; /* Límite para evitar que se vuelva gigante */
+  padding: 10px 0;
+  border-radius: 12px;
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid #4facfe;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  left: auto !important; /* Evita alineación forzada a la izquierda */
+  right: auto !important; /* Evita alineación forzada a la derecha */
+}
+
+/* Asegura que el dropdown esté bien alineado con el botón */
+.navbar .dropdown:hover .dropdown-menu,
+.navbar .dropdown .dropdown-menu.show {
+  margin-top: 0.5rem;
+}
+
+/* Estilo de los ítems dentro */
+.dropdown-menu a.dropdown-item {
+  color: #f0f0f0;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Hover sobre ítems */
+.dropdown-menu a.dropdown-item:hover {
+  background-color: #00ff9d;
+  color: #111;
+  padding-left: 30px;
+  border-left: 3px solid #4facfe;
+}
+
+
+
+/* Animación suave */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.navbar-search {
+  position: relative;
+  margin-left: 2px;
+  padding: 10px 20px;
+  color: white; /* color blanco para la lupa */
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.search-toggle {
+  color: white; /* aseguramos blanco */
+  transition: color 0.3s;
+}
+
+.search-toggle:hover {
+  color: #00ff9d; /* efecto hover neón */
+}
+
+
+/* Estilos para el buscador en navbar */
+
+/* Estilo para el contenedor flotante de búsqueda */
+.floating-search {
+  display: none;
+  position: fixed;
+  top: 180px; /* justo debajo del navbar fijo */
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* Usa tus estilos actuales tal cual */
+.search-container {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-bottom: 70px;
+  width: 90%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1.5rem 0.8rem 3rem;
+  border-radius: 30px;
+  border: 1px solid #4facfe;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4facfe;
+}
+
+.search-input:focus {
+  border-color: #00ff9d;
+  box-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+}
+
+.close-search {
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 10;
+}
+
+
+
+/* CONTENEDOR Y MOVIMIENTO de hongo */
+/* -------------------------------------------------------------------------------------------------------------------- */
+.mushroom-animation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10; /* Más alto que el h1 */
+  pointer-events: none;
+}
+
+.mushroom {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 220px; /* Ajusta esto según la altura deseada sobre el h1 */
+  left: -60px;
+  animation: mushroomRun 8s infinite linear;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
+}
+
+@keyframes mushroomRun {
+    0% { left: -60px; }
+    100% { left: 100%; }
+}
+
+/* Estilos de la seccion de servicios */
+/* -------------------------------------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------------- */
+.hero-section{
+  background-color: #0f0f0f;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+   overflow: hidden; /* <- evita desbordes verticales o partículas fuera */
+}
+
+
+.hero-content{
+  text-align: center;
+  width: 100%;
+   position: relative;
+  z-index: 1; /* Asegura que el h1 y todo esto quede debajo de la seta */
+}
+
+
+.hero-content h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.4rem, 7vw, 3.5rem);
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  padding: 0.8rem;
+  margin-bottom: 1.7rem;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #cccccc 50%,
+    #2f3e46 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  position: relative;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.08),
+    0 0 2px rgba(255, 255, 255, 0.15);
+  animation: textFadeIn 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes textFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-content h1:hover {
+  background-position: -100% 0;
+  text-shadow: 
+    0 0 12px rgba(200, 200, 255, 0.3),
+    0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+/* Subrayado animado */
+.hero-content h1::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #6c79ff, transparent);
+  transition: width 0.4s ease;
+  margin-top: 0.3rem;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+.hero-content h1:hover::before {
+  width: 100%;
+}
+
+/* Cursor tipo máquina más suave */
+.hero-content h1::after {
+  content: "|";
+  position: absolute;
+  right: -15px;
+  color: #bbb;
+  font-size: inherit;
+  opacity: 1;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+.hero-subtitle {
+  font-family: 'Orbitron', 'Montserrat', 'Roboto', Arial, sans-serif; /* Fuente moderna/gamer */
+  font-size: 1.2rem;
+  color: #00f2fe;
+  background: linear-gradient(90deg, #00f2fe 20%, #4facfe 70%, #00ff9d 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 0 auto 2.2rem auto;
+  padding: 0 1.5rem;
+  text-shadow:
+    0 0 16px #00f2fe88,
+    0 0 8px #4facfe55,
+    0 0 2px #00ff9d44;
+  opacity: 0;
+  transform: translateY(30px) scale(1.06) blur(8px);
+  animation: heroSubtitleIn 1.3s cubic-bezier(0.25,0.8,0.25,1.2) 0.6s forwards;
+  /* Delay para que empiece después del título */
+}
+
+@keyframes heroSubtitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) blur(0);
+  }
+}
+
+
+
+/* mantiene todos tus estilos del h1 sin cambiar nada */
+#hero-title {
+  position: relative;
+  z-index: 1;
+}
+
+/* animación */
+.mushroom-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mushroom {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: -40px; /* ← Aquí es donde debes ajustar */
+  left: -60px;
+  animation: mushroomRun 8s infinite linear;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
+}
+
+@keyframes mushroomRun {
+  0% { left: -60px; }
+  100% { left: 100%; }
+}
+
+
+.hero-arrow-bounce {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.7rem;
+  margin-top: -1rem;
+  animation: arrowBounceZoom 1.2s infinite alternate cubic-bezier(.4,1.6,.9,.6);
+  /* Esto crea el efecto de agrandado y vuelve */
+}
+
+.hero-arrow-bounce svg {
+  display: block;
+  filter: drop-shadow(0 0 7px #00f2fe88);
+  /* Resplandor neón */
+  transition: transform 0.22s;
+}
+
+@keyframes arrowBounceZoom {
+  0%   { transform: scale(1) translateY(0);}
+  60%  { transform: scale(1.18) translateY(6px);}
+  100% { transform: scale(1) translateY(0);}
+}
+
+
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#divisor-quienes-somos{
+  background-color:  #F5F5F5;
+}
+/* Estilo específico para la sección ¿Quiénes somos? */
+/* ------------------------------------------------------------------------------------------------------------- */
+.Quienes-somos-titulo-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra el título horizontal y verticalmente */
+}
+
+.hover-underline {
+  font-size: 2rem;
+  color: #020000;
+  position: relative;
+  display: inline-block; /* Necesario para los pseudoelementos */
+}
+
+/* Líneas decorativas arriba y abajo con animación al hacer hover */
+.hover-underline::after,
+.hover-underline::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #ff0000, #00ffff);
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0); /* Ocultas inicialmente */
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+.hover-underline::before {
+  top: -5px;
+  transform-origin: left;
+}
+
+.hover-underline:hover::after,
+.hover-underline:hover::before {
+  transform: scaleX(1); /* Se muestran al hacer hover */
+}
+
+.quienes-somos-section {
+  padding: 40px;
+  background-color:  #F5F5F5;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+/* Layout flexible y centrado para texto e imagen */
+.quienes-somos-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  max-width: 1300px;
+  margin: 160px auto;
+  flex-wrap: wrap; /* Se adapta en pantallas pequeñas */
+}
+
+/* Texto responsivo */
+.quienes-somos-text {
+  flex: 1;
+  min-width: 500px;
+  text-align: center;
+}
+
+
+.quienes-somos-text h1 {
+  font-size: 1.4rem;
+  margin-bottom: 40px;
+  text-align: center;
+  color: inherit; /* Mantiene el color original del texto */
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px; /* Espacio para el subrayado */
+}
+
+/* Línea gamer (neón) solo al hover */
+.quienes-somos-text h1:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #0ff; /* Azul neón (gamer) - Cambia al color que prefieras */
+  box-shadow: 0 0 10px #0ff; /* Efecto brillo neón */
+  border-radius: 2px; /* Bordes ligeramente redondeados */
+}
+
+
+.quienes-somos-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Imagen responsiva con bordes redondeados */
+.quienes-somos-img {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center; /* Centra la imagen horizontalmente */
+}
+
+.quienes-somos-img img {
+  width: 100%;
+  margin-left: 160px;
+  height: 540px;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: all 0.4s ease; /* Transición suave */
+  filter: brightness(1); /* Brillo normal inicial */
+}
+
+.quienes-somos-img img:hover {
+  filter: brightness(1.1) contrast(1.05); /* Aumenta brillo y contraste */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); /* Sombra blanca difusa */
+}
+
+/* Permite que al hacer scroll, esta sección no quede tapada por el navbar */
+#quienes-somos {
+  scroll-margin-top: 188px;
+  position: relative;
+}
+
+/* mision y vision estilos */
+/* -------------------------------------------------------------------------------------------------------------------- */
+
+/* CONTENEDOR PRINCIPAL: Organiza misión y visión en fila con espacio entre ellos */
+.contenedor-mision-vision {
+  display: flex; /* Usa flexbox para alinear horizontalmente */
+  justify-content: space-between; /* Distribuye el espacio entre elementos */
+  text-align: center; /* Centra el texto internamente */
+  gap: 60px; /* Espacio entre los contenedores */
+  max-width: 1400px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centrado horizontal */
+  padding: 20px; /* Espacio interno */
+}
+
+/* ESTILOS COMPARTIDOS: Diseño base para ambos contenedores */
+.mision-container, 
+.vision-container {
+  flex: 1; /* Ocupan igual espacio disponible */
+  padding: 70px; /* Relleno interno */
+  border-radius: 12px; /* Esquinas redondeadas */
+  background: #ffffff; /* Fondo blanco */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transición animada */
+  position: relative; /* Posicionamiento para íconos */
+  overflow: hidden; /* Oculta desbordamientos */
+}
+
+/* ÍCONOS: Estilo base para los íconos de Font Awesome */
+.mision-container::before,
+.vision-container::before {
+  font-family: "Font Awesome 6 Free"; /* Fuente de íconos */
+  font-weight: 900; /* Grosor del ícono */
+  font-size: 2.5rem; /* Tamaño del ícono */
+  color: rgba(74, 108, 247, 0.1); /* Color azul semi-transparente */
+  position: absolute; /* Posicionamiento absoluto */
+  top: 20px; /* Distancia desde arriba */
+  right: 20px; /* Distancia desde la derecha */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+/* ÍCONO MISIÓN: Cohete (representa progreso) */
+.mision-container::before {
+  content: "\f135"; /* Código del ícono de cohete */
+}
+
+/* ÍCONO VISIÓN: Ojo (representa visión futura) */
+.vision-container::before {
+  content: "\f06e"; /* Código del ícono de ojo */
+}
+
+/* ANIMACIÓN COHETE: Efecto de despegue al hacer hover */
+@keyframes despegar {
+  0% { transform: translate(0, 0) rotate(0); } /* Posición inicial */
+  50% { transform: translate(-5px, -15px) rotate(-10deg); } /* Movimiento hacia arriba */
+  100% { transform: translate(0, 0) rotate(0); } /* Vuelve a posición inicial */
+}
+
+/* ANIMACIÓN OJO: Efecto de parpadeo al hacer hover */
+@keyframes parpadear {
+  0%, 45%, 55%, 100% { transform: scaleY(1); } /* Ojo abierto */
+  50% { transform: scaleY(0.1); } /* Ojo cerrado (parpadeo) */
+}
+
+/* EFECTO HOVER GENERAL: Elevación y sombra al pasar el mouse */
+.mision-container:hover, 
+.vision-container:hover {
+  transform: translateY(-12px) scale(1.03); /* Eleva y agranda ligeramente */
+  box-shadow: 0 15px 35px rgba(74, 108, 247, 0.25); /* Sombra más intensa */
+}
+
+/* HOVER MISIÓN: Animación del cohete */
+.mision-container:hover::before {
+  color: #4a6cf7; /* Cambia a azul sólido */
+  animation: despegar 0.6s ease-in-out 2; /* Repite animación 2 veces */
+}
+
+/* HOVER VISIÓN: Animación del ojo */
+.vision-container:hover::before {
+  color: #4a6cf7; /* Cambia a azul sólido */
+  animation: parpadear 0.4s linear 2; /* Repite animación 2 veces */
+}
+
+/* ESTILOS TÍTULOS: Diseño para los encabezados h2 */
+.mision-container h2, 
+.vision-container h2 {
+  color: #2a2a2a; /* Color de texto oscuro */
+  font-size: 1.7rem; /* Tamaño de fuente */
+  margin-bottom: 35px; /* Espacio inferior */
+  position: relative; /* Para la línea decorativa */
+  padding-bottom: 10px; /* Espacio para la línea */
+}
+
+/* LÍNEA DECORATIVA: Subrayado animado bajo títulos */
+.mision-container h2::after, 
+.vision-container h2::after {
+  content: ''; /* Necesario para pseudo-elementos */
+  position: absolute; /* Posicionamiento absoluto */
+  bottom: 0; /* Alineado al fondo */
+  left: 0; /* Comienza desde la izquierda */
+  width: 50px; /* Ancho inicial */
+  height: 3px; /* Grosor de la línea */
+  background: #4a6cf7; /* Color azul */
+  transition: width 0.4s ease; /* Animación suave */
+}
+
+/* HOVER: La línea se expande al 100% del ancho */
+.mision-container:hover h2::after,
+.vision-container:hover h2::after {
+  width: 100%; /* Ocupa todo el ancho */
+}
+
+/* ESTILOS TEXTO: Diseño para los párrafos */
+.mision-container p, 
+.vision-container p {
+  color: #555; /* Color de texto gris */
+  line-height: 1.6; /* Espaciado entre líneas */
+  transition: color 0.3s ease; /* Transición de color */
+  font-size: 1.124rem;
+}
+
+/* HOVER: El texto se oscurece al pasar el mouse */
+.mision-container:hover p,
+.vision-container:hover p {
+  color: #333; /* Color de texto más oscuro */
+}
+
+
+
+
+
+#divider-blue{
+    background: #1a1a2e;
+}
+
+/* mision y vision estilos */
+/* -------------------------------------------------------------------------------------------------------------------- */
+
+/* CONTENEDOR PRINCIPAL: Organiza misión y visión en fila con espacio entre ellos */
+.contenedor-mision-vision {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+  gap: 80px;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+/* ESTILOS COMPARTIDOS: Diseño base para ambos contenedores */
+.mision-container, 
+.vision-container {
+  flex: 1; /* Ocupan igual espacio disponible */
+  padding: 40px 20px; /* Relleno interno */
+  border-radius: 12px; /* Esquinas redondeadas */
+  background: #ffffff; /* Fondo blanco */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transición animada */
+  position: relative; /* Posicionamiento para íconos */
+  overflow: hidden; /* Oculta desbordamientos */
+}
+
+/* ÍCONOS: Estilo base para los íconos de Font Awesome */
+.mision-container::before,
+.vision-container::before {
+  font-family: "Font Awesome 6 Free"; /* Fuente de íconos */
+  font-weight: 900; /* Grosor del ícono */
+  font-size: 2.5rem; /* Tamaño del ícono */
+  color: rgba(74, 108, 247, 0.1); /* Color azul semi-transparente */
+  position: absolute; /* Posicionamiento absoluto */
+  top: 20px; /* Distancia desde arriba */
+  right: 20px; /* Distancia desde la derecha */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+/* ÍCONO MISIÓN: Cohete (representa progreso) */
+.mision-container::before {
+  content: "\f135"; /* Código del ícono de cohete */
+}
+
+/* ÍCONO VISIÓN: Ojo (representa visión futura) */
+.vision-container::before {
+  content: "\f06e"; /* Código del ícono de ojo */
+}
+
+/* ANIMACIÓN COHETE: Efecto de despegue al hacer hover */
+@keyframes despegar {
+  0% { transform: translate(0, 0) rotate(0); } /* Posición inicial */
+  50% { transform: translate(-5px, -15px) rotate(-10deg); } /* Movimiento hacia arriba */
+  100% { transform: translate(0, 0) rotate(0); } /* Vuelve a posición inicial */
+}
+
+/* ANIMACIÓN OJO: Efecto de parpadeo al hacer hover */
+@keyframes parpadear {
+  0%, 45%, 55%, 100% { transform: scaleY(1); } /* Ojo abierto */
+  50% { transform: scaleY(0.1); } /* Ojo cerrado (parpadeo) */
+}
+
+/* EFECTO HOVER GENERAL: Elevación y sombra al pasar el mouse */
+.mision-container:hover, 
+.vision-container:hover {
+  transform: translateY(-12px) scale(1.03); /* Eleva y agranda ligeramente */
+  box-shadow: 0 15px 35px rgba(74, 108, 247, 0.25); /* Sombra más intensa */
+}
+
+/* HOVER MISIÓN: Animación del cohete */
+.mision-container:hover::before {
+  color: #4a6cf7; /* Cambia a azul sólido */
+  animation: despegar 0.6s ease-in-out 2; /* Repite animación 2 veces */
+}
+
+/* HOVER VISIÓN: Animación del ojo */
+.vision-container:hover::before {
+  color: #4a6cf7; /* Cambia a azul sólido */
+  animation: parpadear 0.4s linear 2; /* Repite animación 2 veces */
+}
+
+/* ESTILOS TÍTULOS: Diseño para los encabezados h2 */
+.mision-container h2, 
+.vision-container h2 {
+  color: #2a2a2a; /* Color de texto oscuro */
+  font-size: 1.3rem; /* Tamaño de fuente */
+  margin-bottom: 35px; /* Espacio inferior */
+  position: relative; /* Para la línea decorativa */
+  padding-bottom: 10px; /* Espacio para la línea */
+}
+
+/* LÍNEA DECORATIVA: Subrayado animado bajo títulos */
+.mision-container h2::after, 
+.vision-container h2::after {
+  content: ''; /* Necesario para pseudo-elementos */
+  position: absolute; /* Posicionamiento absoluto */
+  bottom: 0; /* Alineado al fondo */
+  left: 0; /* Comienza desde la izquierda */
+  width: 50px; /* Ancho inicial */
+  height: 3px; /* Grosor de la línea */
+  background: #4a6cf7; /* Color azul */
+  transition: width 0.4s ease; /* Animación suave */
+}
+
+/* HOVER: La línea se expande al 100% del ancho */
+.mision-container:hover h2::after,
+.vision-container:hover h2::after {
+  width: 100%; /* Ocupa todo el ancho */
+}
+
+/* ESTILOS TEXTO: Diseño para los párrafos */
+.mision-container p, 
+.vision-container p {
+  color: #555; /* Color de texto gris */
+  line-height: 1.6; /* Espaciado entre líneas */
+  transition: color 0.3s ease; /* Transición de color */
+  font-size: 1rem;
+}
+
+/* HOVER: El texto se oscurece al pasar el mouse */
+.mision-container:hover p,
+.vision-container:hover p {
+  color: #333; /* Color de texto más oscuro */
+}
+
+
+.section-servicios {
+  padding: 4rem 2rem;
+  background: #1a1a2e;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+/* Permite que al hacer scroll, esta sección no quede tapada por el navbar */
+#servicios {
+  scroll-margin-top: 188px; /* Mismo valor que en #quienes-somos */
+  position: relative; /* Solo si es necesaria para otros elementos */
+  overflow: visible; /* Fuerza a que no recorte el scroll */
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 2rem);
+  text-align: center;
+  margin-bottom: 7rem;
+  color: white;
+  position: relative;
+}
+
+.section-title span {
+  color: #4facfe;
+  position: relative;
+}
+
+/* EFECTO TÍTULO (opcional) */
+.section-title span::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #00f2fe, #4facfe, #00ff9d);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.section-title:hover span::after {
+  transform: scaleX(1);
+}
+
+/* GRID DE SERVICIOS */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  grid-template-rows: repeat(2, 1fr);    /* 2 filas */
+  gap: 3rem;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+/* TARJETAS CON EFECTO GAMER */
+.servicio-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(74, 108, 247, 0.3);
+}
+
+.servicio-card h3{
+  font-size: 1.2rem;
+}
+
+.servicio-card p {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin: 1rem 0;
+}
+
+.servicio-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(74, 108, 247, 0.1),
+    transparent 70%
+  );
+  transform: rotate(30deg);
+  transition: all 0.5s ease;
+}
+
+.servicio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(74, 108, 247, 0.3);
+  border-color: #4facfe;
+}
+
+.servicio-card:hover::before {
+  top: 0;
+  left: 0;
+}
+
+.card-icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 5px rgba(74, 108, 247, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.servicio-card:hover .card-icon img {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.card-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ff4757;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* ESTILOS DEL FOOTER MODERNO */
+/* -------------------------------------------------------------------------------------- */
+#divider-black{
+  background-color:#0f0f0f; ;
+}
+
+
+.footer-section {
+  position: relative;
+  background: #0f0f0f;
+
+  color: #ffffff;
+  padding-top: 50px;
+
+  overflow: hidden;
+}
+
+#contacto{
+  scroll-margin-top: 198px;
+  position: relative;
+   overflow: visible;
+}
+/* Contenedor principal del footer */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 10px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 10px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Columnas del footer */
+.footer-column {
+  padding: 0 15px;
+}
+
+/* Logo del footer */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.footer-logo span {
+  font-size: 1.6rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #ddd8d8 0%, #f3f3f3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Descripción del footer */
+.footer-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.7);
+  width: 18.75rem;
+
+}
+
+/* Redes sociales */
+.footer-social {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: #4a6cf7;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(74, 108, 247, 0.4);
+}
+
+/* Títulos de las columnas */
+.footer-title {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  position: relative;
+  color: white;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+}
+
+/* Listas de enlaces */
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.footer-links a i {
+  margin-right: 8px;
+  font-size: 0.9rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+  padding-left: 5px;
+}
+
+.footer-links a:hover i {
+  color: #00f2fe;
+  margin-right: 12px;
+}
+
+/* Información de contacto */
+.footer-contact {
+  list-style: none;
+}
+
+.footer-contact li {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: flex-start;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-contact i {
+  margin-right: 15px;
+  color: white;
+  font-size: 1.1rem;
+  margin-top: 3px;
+}
+
+/* Footer inferior */
+.footer-bottom {
+  background: #121212;
+  padding: 20px;
+  text-align: center;
+}
+
+.payment-methods {
+  margin-bottom: 15px;
+}
+
+.payment-methods i {
+  font-size: 1.8rem;
+  margin: 0 10px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.payment-methods i:hover {
+  color: white;
+  transform: translateY(-3px);
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.copyright a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.copyright a:hover {
+  color: #4facfe;
+  text-decoration: underline;
+}
+
+/* Botón flotante para volver arriba */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 20px rgba(74, 108, 247, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 999;
+}
+
+.back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(74, 108, 247, 0.5);
+}
+
+/* Efecto de partículas decorativas (opcional) */
+.footer-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(74, 108, 247, 0.3);
+  border-radius: 50%;
+  animation: float 15s infinite linear;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+  }
+}
+

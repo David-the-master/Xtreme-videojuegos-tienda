@@ -1,0 +1,113 @@
+
+
+/* Estilos para el botón de WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 70px;
+  height: 70px;
+  background: #25D366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+  z-index: 999;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+  background: #128C7E;
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-tooltip {
+  position: absolute;
+  left: 80px;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+  opacity: 1;
+  visibility: visible;
+  left: 70px;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+
+
+
+@media (min-width: 1550px) and (max-width: 1620px) and (max-height: 900px) {
+  .whatsapp-float {
+    width: 60px;
+    height: 60px;
+  }
+
+}
+
+
+@media (max-width: 1440px) {
+  .whatsapp-float {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
+
+@media (min-width: 1280px) and (max-width: 1300px) and (max-height: 800px) {
+
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 1279px) { 
+  .whatsapp-float {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+@media (min-width: 1340px) and (max-width: 1380px) and (max-height: 770px) {
+
+  .whatsapp-float {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .whatsapp-float {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+    top: calc(100vh - 120px); 
+  }
+}

@@ -1,0 +1,2138 @@
+
+
+
+
+@media (min-width: 1440px) and (max-width: 1460px) and (max-height: 900px) {
+
+  .navbar-brand img {
+    width: 65px;
+    height: 65px;
+  }
+  .navbar-brand {
+    font-size: 1.2rem !important;
+  }
+
+    /* Estilo para el contenedor flotante de búsqueda */
+.floating-search {
+  display: none;
+  position: fixed ;
+  top: 170px; /* ajustado ligeramente */
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* Contenedor de la barra de búsqueda */
+.search-container {
+  position: relative;
+  max-width: 600px;  /* reducido de 700px */
+  margin: 0 auto 60px; /* margen inferior reducido */
+  width: 85%;         /* más compacto */
+}
+
+/* Input de búsqueda */
+.search-input {
+  width: 100%;
+  padding: 0.6rem 1.3rem 0.6rem 2.5rem; /* padding más pequeño */
+  border-radius: 25px; /* un poco menos redondeado */
+  border: 1px solid #4facfe;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 0.9rem; /* fuente más pequeña */
+  outline: none;
+  transition: all 0.3s;
+}
+
+/* Icono de búsqueda */
+.search-icon {
+  position: absolute;
+  left: 1.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4facfe;
+  font-size: 1rem;
+}
+
+.search-input:focus {
+  border-color: #00ff9d;
+  box-shadow: 0 0 8px rgba(0, 255, 157, 0.25);
+}
+  .hero-content h1{
+    font-size: 2.5rem;
+  }
+
+  .navbar-nav .nav-link {
+  font-weight: 600;
+  font-size: 0.9rem;
+  }
+
+  .dropdown-menu a.dropdown-item {
+
+  font-size: 0.9rem;
+  font-weight: 500;
+  }
+
+  .hover-underline {
+  font-size: 1.6rem;
+
+}
+
+
+.quienes-somos-text h1 {
+  font-size: 1.3rem; /* Más grande */
+  margin-bottom: 3rem;
+}
+
+
+.quienes-somos-text p {
+  font-size: 0.9rem;
+  font-weight: 100;
+}
+
+.quienes-somos-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  max-width: 1000px;
+  margin: 60px auto;
+  flex-wrap: wrap; /* Se adapta en pantallas pequeñas */
+}
+
+
+.quienes-somos-img {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center; /* Centra la imagen horizontalmente */
+}
+
+.quienes-somos-img img {
+  width: 100%;
+  margin-left: 160px;
+  height: 540px;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: all 0.4s ease; /* Transición suave */
+  filter: brightness(1); /* Brillo normal inicial */
+}
+#quienes-somos {
+  scroll-margin-top: 172px;
+}
+.contenedor-mision-vision {
+  display: grid;
+  gap: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+
+}
+/* ESTILOS COMPARTIDOS: Diseño base para ambos contenedores */
+.mision-container, 
+.vision-container {
+  padding: 50px 20px; /* Relleno interno */
+}
+
+
+.mision-container h2, 
+.vision-container h2 {
+  color: #2a2a2a; /* Color de texto oscuro */
+  font-size: 1.1rem; /* Tamaño de fuente */
+  margin-bottom: 35px; /* Espacio inferior */
+
+}
+
+
+.mision-container p, 
+.vision-container p {
+  font-size: 0.9rem; /* Tamaño de fuente */
+}
+
+
+  .section-servicios {
+    padding: 4rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 5rem;
+  }
+
+  .servicios-grid {
+    gap: 2.5rem;
+    max-width: 800px;
+  }
+
+  .servicio-card {
+    padding: 1.5rem;
+  }
+
+  .servicio-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .servicio-card p {
+    font-size: 1.05rem;
+  }
+
+  .card-icon img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .card-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+
+  #servicios {
+  scroll-margin-top: 172px; /* Mismo valor que en #quienes-somos */
+}
+
+  .footer-section {
+    margin-top: 30px;
+    padding-top: 60px;
+  }
+
+  .footer-container {
+    gap: 5px;
+    padding: 0 10px 40px;
+  }
+
+  .footer-logo img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .footer-logo span {
+    font-size: 1.3rem;
+  }
+
+  .footer-description {
+    font-size: 0.85rem;
+    width: 16rem;
+  }
+
+  .footer-title {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .footer-links a,
+  .footer-contact li {
+    font-size: 0.85rem;
+  }
+
+  .footer-contact i {
+    font-size: 1rem;
+    margin-right: 10px;
+  }
+
+  .social-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 0.95rem;
+  }
+
+  .payment-methods i {
+    font-size: 1.5rem;
+    margin: 0 8px;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+
+  .back-to-top {
+    width: 60px;
+    height: 60px;
+    font-size: 1rem;
+  }
+
+#contacto{
+  scroll-margin-top: 304px;
+  position: relative;
+   overflow: visible;
+}
+
+
+}
+
+
+
+
+@media (max-width: 1439px) {
+  html {
+    font-size: 15px;
+  }
+    /* RECOMENDADO: Ajustes para navbar */
+  nav {
+    padding: 10px 20px;
+  }
+
+
+  nav .logo {
+    font-size: 1.2rem;
+  }
+
+  .navbar-brand img {
+  width: 60px;
+  height: 60px;
+  margin-right: 5px;
+}
+
+  nav ul li {
+    margin: 0 10px;
+  }
+
+  nav ul li a {
+    font-size: 1rem;
+  }
+
+
+  .hover-underline {
+    font-size: 2rem;
+
+    }
+  .hero-section h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-content button {
+    transform: scale(0.95);
+  }
+
+.quienes-somos-grid {
+  display: grid;
+  margin: 100px auto;
+    gap: 70px;
+}
+
+  .quienes-somos-text {
+  font-size: 0.6rem;
+    margin-left: 20px;
+}
+
+.quienes-somos-text h1 {
+  font-size: 1.3rem;
+
+}
+
+.quienes-somos-text p {
+  font-size: 1rem;
+
+  font-weight: 100;
+
+}
+
+.quienes-somos-img {
+  height: auto; /* Que solo crezca lo necesario */
+  max-height: 100%; /* Nunca más alto que su contenedor padre */
+}
+
+.quienes-somos-img img {
+  width: 90%;
+  max-width: 650px;
+  height: auto;
+  max-height: 100%; /* Nunca más alta que su contenedor */
+  object-fit: contain; /* Muestra todo sin recorte */
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+
+#quienes-somos {
+  scroll-margin-top: 165px;
+}
+
+
+.contenedor-mision-vision {
+  gap: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px;
+
+}
+/* ESTILOS COMPARTIDOS: Diseño base para ambos contenedores */
+.mision-container, 
+.vision-container {
+  flex: 1; /* Ocupan igual espacio disponible */
+  padding: 20px 20px; /* Relleno interno */
+
+
+}
+/* ESTILOS TÍTULOS: Diseño para los encabezados h2 */
+.mision-container h2, 
+.vision-container h2 {
+  color: #2a2a2a; /* Color de texto oscuro */
+  font-size: 1.2rem; /* Tamaño de fuente */
+  margin-bottom: 45px; /* Espacio inferior */
+  position: relative; /* Para la línea decorativa */
+  padding-bottom: 30px; /* Espacio para la línea */
+}
+
+/* ESTILOS TEXTO: Diseño para los párrafos */
+.mision-container p, 
+.vision-container p {
+  color: #555; /* Color de texto gris */
+  line-height: 1.6; /* Espaciado entre líneas */
+  font-size: 1rem;
+}
+
+
+
+  .section-servicios {
+    padding: 3.2rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.3rem, 3.5vw, 2.1rem);
+    margin-bottom: 5rem;
+  }
+
+  .servicios-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    gap: 2.5rem;
+  }
+
+  .servicio-card {
+    padding: 1.5rem;
+  }
+
+  .servicio-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .servicio-card p {
+    font-size: 1.05rem;
+  }
+
+  .card-icon img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .card-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.7rem;
+  }
+
+    #servicios {
+  scroll-margin-top: 165px; /* Mismo valor que en #quienes-somos */
+}
+
+
+
+
+  .footer-description {
+    width: 100%;
+  }
+
+
+
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0 20px 50px;
+    max-width: 100%;
+  }
+
+  .footer-column {
+    padding: 0 10px;
+  }
+
+  .footer-logo img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .footer-logo span {
+    font-size: 1.3rem;
+  }
+
+  .footer-description {
+    font-size: 1rem;
+    
+    width: 80%;
+  }
+
+  .footer-title {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .footer-links a,
+  .footer-contact li {
+    font-size: 0.9rem;
+  }
+
+  .footer-contact i {
+    font-size: 0.95rem;
+    margin-right: 8px;
+  }
+
+  .footer-social {
+    gap: 10px;
+  }
+
+  .social-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 0.95rem;
+  }
+
+  .payment-methods i {
+    font-size: 1.4rem;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+  .back-to-top {
+    width: 60px;
+    height: 60px;
+    font-size: 1rem;
+  }
+
+
+}
+
+
+/* 🩹 Parche para pantallas 1366x768 y 1360x768 */
+@media (min-width: 1360px) and (max-width: 1380px) and (max-height: 770px) {
+
+  .navbar-brand img {
+    width: 60px;
+    height: 60px;
+  }
+  .navbar-brand {
+    font-size: 1.05rem !important;
+  }
+
+  .floating-search {
+    top: 120px;
+  }
+
+  .search-container {
+    max-width: 550px;
+    margin-bottom: 50px;
+    width: 80%;
+  }
+
+  .search-input {
+    padding: 0.5rem 1.1rem 0.5rem 2.2rem;
+    border-radius: 22px;
+    font-size: 0.85rem;
+  }
+
+  .search-icon {
+    left: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .mushroom {
+    bottom: 500px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 0.85rem;
+  }
+
+  .dropdown-menu a.dropdown-item {
+    font-size: 0.85rem;
+  }
+
+  .hover-underline {
+    font-size: 1.6rem;
+  }
+
+
+  .quienes-somos-text h1 {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  .quienes-somos-text p {
+    font-size: 0.9rem;
+  }
+
+  .contenedor-mision-vision {
+    gap: 40px;
+    max-width: 1100px;
+    padding: 20px;
+  }
+
+  .mision-container, .vision-container {
+    padding: 45px 15px;
+  }
+
+  .mision-container h2, .vision-container h2 {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .mision-container p, .vision-container p {
+    font-size: 0.9rem;
+  }
+
+  #quienes-somos {
+  scroll-margin-top: 166px;
+  position: relative;
+}
+
+
+  .section-servicios {
+    padding: 2.5rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 4rem;
+  }
+
+  .servicios-grid {
+    gap: 2rem;
+    max-width: 850px;
+  }
+
+  .servicio-card {
+    padding: 1.3rem;
+  }
+
+  .servicio-card h3 {
+    font-size: 1rem;
+  }
+
+  .servicio-card p {
+    font-size: 1rem;
+  }
+
+  .card-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+    #servicios {
+  scroll-margin-top: 166px;
+  position: relative;
+}
+
+
+  .card-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .footer-section {
+    margin-top: 20px;
+    padding-top: 100px;
+  }
+
+  .footer-container {
+    gap: 4px;
+    padding: 0 10px 30px;
+  }
+
+  .footer-logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .footer-logo span {
+    font-size: 1.2rem;
+  }
+
+  .footer-description {
+    font-size: 0.8rem;
+    width: 15rem;
+  }
+
+  .footer-title {
+    font-size: 1rem;
+    margin-bottom: 18px;
+  }
+
+  .footer-links a, .footer-contact li {
+    font-size: 0.8rem;
+  }
+
+  .footer-contact i {
+    font-size: 0.95rem;
+    margin-right: 8px;
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .payment-methods i {
+    font-size: 1.4rem;
+    margin: 0 7px;
+  }
+
+  .copyright {
+    font-size: 0.75rem;
+  }
+
+  .back-to-top {
+    width: 55px;
+    height: 55px;
+    font-size: 0.95rem;
+  }
+}
+
+
+/* 🩹 Parche para pantallas 1280x960 o similares */
+@media (min-width: 1280px) and (max-width: 1300px) and (max-height: 960px) {
+
+  .navbar-brand img {
+    width: 58px;
+    height: 58px;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem !important;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 0.9rem !important;
+  }
+
+  .floating-search {
+    top: 135px;
+  }
+
+  .search-container {
+    max-width: 520px;
+    width: 80%;
+    margin-bottom: 45px;
+  }
+
+  .search-input {
+    padding: 1rem 2rem 1rem 3rem;
+    font-size: 0.9rem;
+  }
+
+  .search-icon {
+    left: 1.3rem;
+    font-size: 0.9rem;
+  }
+
+  .mushroom {
+    width: 48px;
+    height: 48px;
+    top: -36px; /* Un poco más arriba */
+  }
+
+  .hero-content h1 {
+    font-size: 2.7rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .hero-content button {
+    transform: scale(0.94);
+  }
+
+  .dropdown-menu a.dropdown-item {
+    font-size: 0.83rem;
+  }
+
+  .hover-underline {
+    font-size: 1.8rem;
+  }
+
+  .quienes-somos-text h1 {
+    font-size: 1.3rem;
+    margin-bottom: 2.7rem;
+  }
+
+  .quienes-somos-text p {
+    font-size: 1rem;
+  }
+
+  .contenedor-mision-vision {
+    gap: 35px;
+    padding: 18px;
+  }
+
+  .mision-container, .vision-container {
+    padding: 40px 12px;
+  }
+
+  .mision-container h2, .vision-container h2 {
+    font-size: 1.3rem;
+    margin-bottom: 28px;
+  }
+
+  .mision-container p, .vision-container p {
+    font-size: 1rem;
+  }
+
+  #quienes-somos {
+    scroll-margin-top: 160px;
+    position: relative;
+  }
+
+  .section-servicios {
+    padding: 2.3rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 3.8rem;
+  }
+
+  .servicios-grid {
+    max-width: 840px;
+    gap: 2rem;
+  }
+
+  .servicio-card {
+    padding: 1.2rem;
+  }
+
+  .servicio-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .servicio-card p {
+    font-size:1rem;
+  }
+
+  .card-icon img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .card-badge {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  #servicios {
+    scroll-margin-top: 160px;
+    position: relative;
+  }
+
+  .footer-section {
+    padding-top: 90px;
+  }
+
+  .footer-container {
+    gap: 4px;
+    padding: 0 10px 25px;
+  }
+
+  .footer-logo img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .footer-logo span {
+    font-size: 1.3rem;
+  }
+
+  .footer-description {
+    font-size: 0.9em;
+    width: 14rem;
+  }
+
+  .footer-title {
+    font-size: 1rem;
+  }
+
+  .footer-links a,
+  .footer-contact li {
+    font-size: 0.9rem;
+  }
+
+  .footer-contact i {
+    font-size: 0.9rem;
+    margin-right: 8px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .payment-methods i {
+    font-size: 1.5rem;
+    margin: 0 6px;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+
+  .back-to-top {
+    width: 52px;
+    height: 52px;
+    font-size: 0.92rem;
+  }
+}
+
+
+/* Laptop media */
+@media (max-width: 1279px) {
+  html {
+    font-size: 14px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-content button {
+    transform: scale(0.9);
+  }
+
+  .mushroom {
+    width: 50px;
+    height: 50px;
+  }
+
+  .quienes-somos-wrapper {
+    flex-direction: column;
+    gap: 40px;
+    margin: 80px auto;
+  }
+
+  .quienes-somos-img {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .quienes-somos-img img {
+    width: 90%;
+    height: auto;
+    max-height: 480px;
+  }
+
+  .quienes-somos-text {
+    max-width: 700px;
+    margin-left: 0;
+    padding: 0 1rem;
+  }
+
+  .quienes-somos-text h1 {
+    font-size: 1.2rem;
+  }
+
+  .quienes-somos-text p {
+    font-size: 1rem;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr 1fr;
+    max-width: 800px;
+  }
+
+  .servicio-card {
+    padding: 1.2rem;
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+
+
+
+@media (max-width: 1024px) and (max-height: 1366px){
+
+    /* Hero */
+.hero-section{
+  height: 57vh;
+  
+}
+}
+
+
+@media (max-width: 1024px) and (max-height: 768px){
+
+    /* Hero */
+.hero-section{
+  height: 100vh;
+  
+}
+}
+
+
+
+
+/* ========== Tablets horizontales ========== */
+@media (max-width: 1023px) { 
+      html {
+    font-size: 14px; /* Reduce un poco la base */
+  }
+
+
+
+    #navbar-desktop {
+    display: none !important;
+  }
+
+  #navbar-mobile {
+    display: flex !important;
+  }
+
+  .container-fluid{
+    padding: 0.5rem ;
+  }
+  .offcanvas-body{
+    background-color: #1a1a1a; 
+  }
+  .offcanvas-header{
+    background-color: #1a1a1a; 
+  }
+  .navbar-mobile .nav-items a{
+    padding: 20px;
+  }
+
+
+/* Estilos del toggler solo para el navbar móvil */
+#navbar-mobile .navbar-toggler {
+  border: 1px solid #ffffff !important;
+  padding: 0.6rem;
+  margin-left: auto;
+  order: 2;
+  background: transparent;
+  border-radius: 5px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#navbar-mobile .navbar-toggler:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+#navbar-mobile .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='%23FFFFFF' stroke-width='2.5' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  width: 1.2em;
+  height: 1.2em;
+  filter: none !important;
+}
+
+#navbar-mobile .navbar-toggler:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+
+/* Estilo base de los enlaces en el navbar móvil */
+#navbar-mobile .nav-link {
+  padding: 16px 14px;
+  font-size: 0.95rem;
+  font-family: 'Orbitron', 'Montserrat', 'Segoe UI', sans-serif;
+  color: #f5f5f5;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Dropdown principal */
+#navbar-mobile .dropdown-menu {
+  background-color: #1b1b1b;
+  padding: 0;
+  border: none;
+  margin-top: 5px;
+  width: 100%;
+}
+
+/* Estilo de cada opción en el dropdown */
+#navbar-mobile .dropdown-menu .dropdown-item {
+  padding: 10px 20px;
+  font-size: 0.92rem;
+  font-family: 'Orbitron', 'Montserrat', 'Segoe UI', sans-serif;
+  color: #f0f0f0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Íconos con color claro fijo */
+#navbar-mobile .nav-link i,
+#navbar-mobile .dropdown-item i {
+  font-size: 1rem;
+  margin-right: 8px;
+  color: #ffffff;
+}
+
+
+
+
+  .navbar{
+     --nav-bg: #1a1a1a !important; 
+  }
+
+
+
+  /* Contenedor adaptado */
+  .search-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  /* Input responsivo */
+  .search-input-mobile {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    padding-right: 3rem; /* espacio para el ícono */
+    border-radius: 25px;
+    border: 1px solid #4facfe;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+  }
+
+  /* Botón de lupa a la derecha */
+  .search-button-mobile {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #4facfe;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .search-button-mobile:hover {
+    color: #00ff9d;
+  }
+
+
+
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    max-width: 75%; /* Limita el ancho máximo */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .navbar-brand img {
+    height: 60px;
+    width: 60px;
+  }
+
+  .navbar-brand .brand-text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .navbar-toggler {
+    margin-left: auto;
+  }
+.container-fluid {
+    padding: 0.8rem ;
+  }
+
+
+  .mushroom {
+    width: 45px;
+    height: 45px;
+  }
+
+  .hover-underline {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  /* Hero */
+.hero-section{
+  height: 90vh;
+  
+}
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .quienes-somos-text {
+    font-size: 0.55rem;
+  }
+
+  .quienes-somos-text h1 {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+  }
+
+  .quienes-somos-text p {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+
+  .quienes-somos-img img {
+    width: 90%;
+    height: 100%;
+    margin-bottom: 40px;
+  }
+
+#quienes-somos {
+  scroll-margin-top: 186px;
+}
+
+
+
+  /* Misión y Visión */
+  .contenedor-mision-vision {
+    flex-direction: column;
+    gap: 40px;
+    padding: 10px;
+  }
+
+  .mision-container,
+  .vision-container {
+    padding: 15px;
+  }
+
+  .mision-container h2,
+  .vision-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+  }
+
+  .mision-container p,
+  .vision-container p {
+    font-size: 0.95rem;
+  }
+
+  /* Servicios */
+  .section-servicios {
+    padding: 3rem 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 3vw, 2rem);
+    margin-bottom: 4rem;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr, 1fr;
+    gap: 2rem;
+  }
+
+  .servicio-card {
+    padding: 1.4rem;
+  }
+
+  .servicio-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .servicio-card p {
+    font-size: 1rem;
+  }
+
+  .card-icon img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .card-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+    #servicios {
+  scroll-margin-top: 186px; 
+}
+
+
+
+
+  /* Footer */
+  .footer-container {
+    padding: 0 15px 40px;
+    gap: 30px;
+  }
+
+  .footer-logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .footer-logo span {
+    font-size: 1.2rem;
+  }
+
+  .footer-title {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  .footer-description {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .footer-links a,
+  .footer-contact li {
+    font-size: 0.85rem;
+  }
+
+  .footer-contact i {
+    font-size: 0.9rem;
+    margin-right: 6px;
+  }
+
+  .footer-social {
+    gap: 8px;
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .payment-methods i {
+    font-size: 1.3rem;
+  }
+
+  .copyright {
+    font-size: 0.75rem;
+  }
+
+  .back-to-top {
+    width: 55px;
+    height: 55px;
+    font-size: 0.9rem;
+  }
+
+  .back-to-top.active {
+    top: calc(100vh - 120px); /* Ajusta la posición para que no se superponga con el footer */
+}
+#contacto{
+  scroll-margin-top: 350px;
+  position: relative;
+   overflow: visible;
+}
+
+
+}
+
+
+@media (max-width: 950px){
+
+.hero-section{
+  height: 90vh;
+  
+}
+
+ .hero-section h1 {
+    font-size: 2.8rem;
+  }
+
+ .contenedor-mision-vision {
+    display: block;
+    padding: 20px 10px;
+  }
+
+  .mision-container,
+  .vision-container {
+    width: 600px;
+    margin: 0 auto 30px auto; /* Centrado horizontal + espacio inferior */
+    padding: 30px 60px;
+  }
+
+  .mision-container:last-child,
+  .vision-container:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ========== Tablets verticales ========== */
+@media (max-width: 767px) { 
+     html {
+    font-size: 13.5px;
+  }
+  .mushroom {
+    width: 45px;
+    height: 45px;
+     animation: mushroomRun 4s infinite linear;
+  }
+
+  .hover-underline {
+    font-size: 1.6rem;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    
+  }
+
+  .hero-section h1 {
+    font-size: 2.8rem;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+
+
+  /* Quiénes Somos */
+  .quienes-somos-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    margin: 60px auto;
+  }
+
+  .quienes-somos-text {
+    font-size: 0.5rem;
+    width: 80%;
+    margin-left: 5px;
+  }
+
+  .quienes-somos-text h1 {
+    font-size: 1.3rem;
+  }
+
+  .quienes-somos-text p {
+    font-size: 1rem;
+  }
+
+  .quienes-somos-img img {
+    width: 75%;
+    height: 100%;
+  }
+
+   .contenedor-mision-vision {
+    display: block;
+    padding: 20px 10px;
+  }
+
+  .mision-container,
+  .vision-container {
+    width: 500px;
+    margin: 0 auto 30px auto; /* Centrado horizontal + espacio inferior */
+    padding: 30px 60px;
+  }
+
+  .mision-container:last-child,
+  .vision-container:last-child {
+    margin-bottom: 0;
+  }
+
+  .mision-container h2, 
+  .vision-container h2 {
+    font-size: 1.5rem;              /* Ligeramente más pequeño */
+  }
+
+  .mision-container p, 
+  .vision-container p {
+    font-size: 1rem;                /* Ajuste de tamaño para mejor lectura */
+  }
+  /* Servicios */
+  .section-servicios {
+    padding: 2.5rem 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.9rem, 3vw, 1.8rem);
+    margin-bottom: 3rem;
+  }
+
+  .servicios-grid {
+    gap: 2.2rem;
+  }
+
+  .servicio-card {
+    padding: 1.5rem;
+  }
+
+  .servicio-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .servicio-card p {
+    font-size: 0.95rem;
+  }
+
+  .card-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .card-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  /* Footer */
+  .footer-container {
+    padding: 0 15px 30px;
+    gap: 25px;
+  }
+
+  .footer-logo img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .footer-logo span {
+    font-size: 1.1rem;
+  }
+
+  .footer-title {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .footer-description {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .footer-links a,
+  .footer-contact li {
+    font-size: 0.8rem;
+  }
+
+  .footer-contact i {
+    font-size: 0.9rem;
+    margin-right: 6px;
+  }
+
+  .footer-social {
+    gap: 8px;
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+  }
+
+  .payment-methods i {
+    font-size: 1.2rem;
+  }
+
+  .copyright {
+    font-size: 0.75rem;
+  }
+
+  .back-to-top {
+    width: 55px;
+    height: 55px;
+    font-size: 0.85rem;
+  }
+}
+
+
+
+
+/* ========== Teléfonos grandes ========== */
+@media (max-width: 599px) { 
+      html {
+    font-size: 13px;
+  }
+
+.offcanvas-mobile-width  {
+    width: 80vw !important; /* Ancho del menú móvil */
+  }
+
+
+.container-fluid {
+    padding: 0.5rem ;
+  }
+
+  .mushroom {
+    width: 40px;
+    height: 40px;
+
+  }
+
+.hero-section{
+
+  height: 90vh;
+}
+
+  .hero-section h1 {
+    font-size: 2.3rem;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .hover-underline {
+    font-size: 1.8rem;
+  }
+
+  .quienes-somos-wrapper {
+    gap: 40px;
+    margin: 80px auto;
+  }
+
+  .quienes-somos-text {
+    font-size: 0.5rem;
+    margin-left: 5px;
+  }
+
+  .quienes-somos-text h1 {
+    font-size: 1.4rem;
+  }
+
+  .quienes-somos-text p {
+    font-size: 1.1rem;
+  }
+
+  .quienes-somos-img img {
+    width: 90%;
+    height: 100%;
+  }
+#quienes-somos {
+  scroll-margin-top: 175px;
+}
+
+ 
+  .mision-container,
+  .vision-container {
+    width: 440px;
+    margin: 0 auto 30px auto; /* Centrado horizontal + espacio inferior */
+    padding: 30px 60px;
+  }
+
+  .mision-container:last-child,
+  .vision-container:last-child {
+    margin-bottom: 0;
+  }
+
+  .mision-container h2,
+  .vision-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  .mision-container p,
+  .vision-container p {
+    font-size: 1rem;
+  }
+
+  /* Servicios */
+  .section-servicios {
+    padding: 2rem 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 2.8vw, 1.7rem);
+    margin-bottom: 7.5rem;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .servicio-card {
+    padding: 2.1rem;
+  }
+
+  .servicio-card h3 {
+    font-size: 1.4em;
+  }
+
+  .servicio-card p {
+    font-size: 1.1rem;
+  }
+
+  .card-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .card-badge {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+    #servicios {
+  scroll-margin-top: 175px; 
+}
+
+
+
+  /* Footer */
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 10px 25px;
+    gap: 60px;
+  }
+
+  .footer-logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-logo span {
+    font-size: 1.3rem;
+  }
+
+  .footer-title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .footer-description {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .footer-links a,
+  .footer-contact li {
+    font-size: 1rem;
+  }
+
+  .footer-contact i {
+    font-size: 1rem;
+    margin-right: 6px;
+  }
+
+  .footer-social {
+    gap: 11px;
+  }
+
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .payment-methods i {
+    font-size: 1.5rem;
+  }
+
+  .copyright {
+    font-size: 1rem;
+  }
+
+  #contacto{
+  scroll-margin-top: 196px;
+
+}
+
+
+}
+
+
+@media (max-width: 560px){
+  .quienes-somos-section {
+    display: none !important;
+  }
+
+.hero-section{
+
+  height: 85vh;
+}
+
+
+  .quienes-somos-mobile {
+    display: block;
+    padding: 1.5rem;
+    background-color: #F5F5F5;
+    
+  }
+
+  .grid-quienes-mobile {
+    display: grid;
+    gap: 4.5rem;
+    text-align: center;
+  }
+
+  .quienes-texto-mobile p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 90%;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+  }
+
+  .quienes-texto-mobile h3 {
+    font-size: 1.6rem;
+    margin-bottom: 4rem;
+  }
+
+  .quienes-imagen-mobile img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    margin-bottom: 7rem;
+  }
+
+
+  #quienes-somos-mobile {
+  scroll-margin-top: 175px;
+}
+
+
+
+
+  .titulo-quienes-mobile h2 {
+    font-size: 2rem;
+    margin-bottom: 10rem;
+    text-align: center;
+    color: #333;
+  }
+
+   /* Tarjetas Misión y Visión */
+  .card-mobile {
+    position: relative;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    text-align: center;
+    gap: 150px;
+  }
+
+  .card-mobile h2 {
+    font-size: 1.6rem;
+    margin-bottom: 60px;
+    color: #2a2a2a;
+    position: relative;
+  }
+
+  .card-mobile h2::after {
+    content: '';
+    width: 40px;
+    height: 3px;
+    background: #4a6cf7;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+
+  .card-mobile p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  /* Íconos decorativos */
+  .mision-mobile::before,
+  .vision-mobile::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 2rem;
+    color: #4a6cf7;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
+  .mision-mobile::before {
+    content: "\f135"; /* ícono cohete */
+  }
+
+  .vision-mobile::before {
+    content: "\f06e"; /* ícono ojo */
+  }
+
+
+   .quienes-somos-mobile,
+  .grid-quienes-mobile,
+  .quienes-texto-mobile,
+  .quienes-texto-mobile p,
+  .quienes-texto-mobile h3,
+  .titulo-quienes-mobile h2,
+  .card-mobile,
+  .card-mobile h2,
+  .card-mobile p {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+  }
+
+  .card-mobile h2 {
+    font-weight: 600;
+  }
+}
+
+
+
+
+/* ========== Teléfonos pequeños ========== */
+@media (max-width: 480px) { 
+      html {
+    font-size: 14px;
+  }
+
+  .navbar-brand .brand-text {
+    font-size: 0.82rem;
+  }
+
+  .navbar-brand img {
+    height: 50px;
+    width: 50px;
+  }
+  /* Animación del honguito */
+  .mushroom {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding: 40px 10px;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+
+
+  .titulo-quienes-mobile h2{
+    font-size: 1.7rem ;
+  }
+
+  .quienes-texto-mobile p {
+    font-size: 0.9rem;
+  }
+
+  .quienes-texto-mobile h3 {
+    font-size: 1.3rem;
+  }
+
+  .card-mobile h2 {
+    font-size: 1.3rem;
+    margin-bottom: 60px;
+    color: #2a2a2a;
+    position: relative;
+  }
+
+
+  .card-mobile p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  /* Servicios */
+  .section-servicios {
+    padding: 1.5rem 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 2.5vw, 1.4rem);
+    margin-bottom: 2rem;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr;
+    width: 320px;
+    gap: 1.2rem;
+  }
+
+  .servicio-card {
+    padding: 1rem;
+  }
+
+  .servicio-card h3 {
+    font-size: 1rem;
+  }
+
+  .servicio-card p {
+    font-size: 0.8rem;
+  }
+
+  .card-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .card-badge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.45rem;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra todo horizontalmente */
+    text-align: center;  /* Alinea el texto al centro */
+    gap: 25px;           /* Espacio entre columnas */
+  }
+
+  .footer-column {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .footer-logo {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-logo img {
+    margin-bottom: 8px;
+  }
+
+  .footer-description {
+    font-size: 0.78rem;
+    padding: 0 10px;
+  }
+
+  .footer-social {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Centra todo horizontalmente */
+  text-align: center;
+  padding-left: 0;
+  margin: 0 auto;
+  max-width: 320px;       /* Evita que se estiren demasiado */
+}
+
+  .footer-links li,
+  .footer-contact li {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  .payment-methods {
+    justify-content: center;
+  }
+
+  .copyright {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+
+
+
+}
+
+@media (max-width: 390px) { 
+
+
+  .titulo-quienes-mobile h2{
+    font-size: 1.6rem ;
+  }
+
+  .quienes-texto-mobile p {
+    font-size: 0.9rem;
+  }
+
+  .quienes-texto-mobile h3 {
+    font-size: 1.2rem;
+  }
+}
+
+
+@media (max-width: 370px) { 
+
+  .servicios-grid {
+    grid-template-columns: 1fr;
+    width: 280px;
+    gap: 1.2rem;
+  }
+
+
+    .titulo-quienes-mobile h2{
+    font-size: 1.5rem ;
+  }
+
+  .quienes-texto-mobile p {
+    font-size: 0.9rem;
+  }
+
+  .quienes-texto-mobile h3 {
+    font-size: 1.2rem;
+  }
+}
+
+
+@media (max-width: 340px){
+    .servicios-grid {
+    grid-template-columns: 1fr;
+    width: 260px;
+    gap: 1.2rem;
+  }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+# Entorno virtual
+env/
+venv/
+
+# Archivos y carpetas de Python
+__pycache__/
+*.py[cod]
+
+# Base de datos local de desarrollo
+db.sqlite3
+
+# Archivos de migraciones compiladas
+**/migrations/*.pyc
+**/migrations/__pycache__/
+
+# Archivos temporales
+*.log
+*.swp
+*.tmp
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración personal de editores
+.vscode/
+.idea/

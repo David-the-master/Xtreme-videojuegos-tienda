@@ -1,0 +1,355 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tienda/css/productos/productos.css'%}">
+    <link rel="stylesheet" href="{% static 'tienda/css/main/separador.css'%}">
+    <link rel="stylesheet" href="{% static 'tienda/css/main/whatsapp.css'%}">
+    <link rel="stylesheet" href="{% static 'tienda/css/responsive/responsive-productos.css'%}">
+    <link rel="icon" href="{% static 'tienda/imagenes/xtreme-icono.ico'%}" type="image/x-icon">
+
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <title>Productos</title>
+
+
+</head>
+<body>
+
+
+ <!-- --------------------------------------------------------------------------------------------------------------- -->
+   <!-- encabezado y barra de navefacion de la pagina(header y nav) -->
+<header>
+<!-- NAVBAR DESKTOP -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar-desktop">
+  <div class="container-nav">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <img src="{% static 'tienda/imagenes/xtreme-icono.ico'%}" alt="GameShop logo" class="logo">
+      Xtreme Videojuegos
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' %}">
+            <i class="bi bi-house-door-fill me-1"></i> Inicio
+          </a>
+        </li>
+
+
+<!-- Catálogo (Dropdown dinámico con Iconify) -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="catalogoDropdown" role="button"
+     data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="iconify me-1" data-icon="mdi:gamepad-variant" data-width="20" data-height="20" style="color: white;"></span>
+    Nuestro Catálogo
+  </a>
+  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="catalogoDropdown">
+    <li>
+      <a class="dropdown-item" href="{% url 'productos' %}">
+        <span class="iconify me-2" data-icon="mdi:apps" data-width="20" data-height="20" style="color: white;"></span>
+        Todos los productos
+      </a>
+    </li>
+    {% for categoria in categorias %}
+      <li>
+        <a class="dropdown-item" href="{% url 'productos' %}?categoria={{ categoria.slug }}">
+          <span class="iconify me-2" data-icon="{{ categoria.icono }}" data-width="20" data-height="20" style="color: white;"></span>
+          {{ categoria.nombre }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</li>
+
+        <!-- Contacto directo -->
+        <li class="nav-item">
+          <a class="nav-link" href="#contacto">
+            <i class="bi bi-envelope-fill me-1"></i> Contacto
+          </a>
+        </li>
+      </ul>
+
+      <!-- ✅ Ícono de búsqueda -->
+      <div class="navbar-search">
+        <i class="fas fa-search search-toggle" id="toggleSearch" style="cursor: pointer;"></i>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Barra de búsqueda flotante -->
+  <div class="floating-search" id="floatingSearch">
+    <div class="search-container">
+      <span class="close-search" id="closeSearch">&times;</span>
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="floatingSearchInput" placeholder="Buscar productos..." class="search-input">
+      <i class="fas fa-search search-icon" id="floatingSearchIcon"></i>
+    </div>
+  </div>
+
+
+
+
+<!-- Navbar móvil con offcanvas personalizado (0 - 1024px) -->
+<nav id="navbar-mobile" class="navbar fixed-top d-xl-none d-lg-none d-md-block d-sm-block d-xs-block">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}">
+      <img src="{% static 'tienda/imagenes/xtreme-icono.ico'%}" alt="GameShop logo" class="me-2">
+      <span class="brand-text">Xtreme Videojuegos</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenedor Offcanvas -->
+    <div class="offcanvas offcanvas-end text-bg-dark offcanvas-mobile-width" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menú</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}"  >
+              <i class="fas fa-home me-2"></i>Home
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#contacto">
+              <i class="fas fa-envelope me-2"></i>Contacto
+            </a>
+          </li>
+
+
+<!-- Dropdown Catálogo (Versión móvil) -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="catalogoDropdownMobile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="iconify me-1" data-icon="mdi:gamepad-variant" data-width="20" data-height="20" style="color: white;"></span>
+    Catálogo
+  </a>
+  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="catalogoDropdownMobile">
+    <li>
+      <a class="dropdown-item" href="{% url 'productos' %}">
+        <span class="iconify me-2" data-icon="mdi:apps" data-width="20" data-height="20" style="color: white;"></span>
+        Todos los productos
+      </a>
+    </li>
+    {% for categoria in categorias %}
+      <li>
+        <a class="dropdown-item" href="{% url 'productos' %}?categoria={{ categoria.slug }}">
+          <span class="iconify me-2" data-icon="{{ categoria.icono }}" data-width="20" data-height="20" style="color: white;"></span>
+          {{ categoria.nombre }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</li>
+
+
+        </ul>
+
+<!-- Buscador para mobile (sidebar) -->
+<div class="search-container mt-4">
+  <input type="text" id="floatingSearchInputMobile" placeholder="Buscar productos..." class="search-input-mobile">
+  <button id="floatingSearchBtnMobile" class="search-button-mobile">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+
+<!-- seccion de productos -->
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+<section class="section-productos" id="productos">
+  <h2 class="section-title">¡Elige Tu Próxima <span>Aventura!</span></h2>
+
+
+<!-- Mostrar título si hay búsqueda -->
+{% if busqueda %}
+  <h2 class="titulo-busqueda">Resultados para "{{ busqueda }}"</h2>
+{% endif %}
+
+<!-- Si hay productos, se muestran -->
+{% if productos %}
+  <div class="productos-grid">
+    {% for producto in productos %}
+      <div class="producto-card {{ producto.categoria.slug }}">
+        {% if producto.etiqueta %}
+          <div class="producto-badge">{{ producto.etiqueta }}</div>
+        {% endif %}
+
+        {% if producto.imagen %}
+          <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" loading="lazy">
+        {% else %}
+          <img src="{% static 'tienda/img/no-image.png' %}" alt="Sin imagen">
+        {% endif %}
+
+        <div class="producto-info">
+          <h3>{{ producto.nombre }}</h3>
+          <p class="producto-desc">{{ producto.descripcion }}</p>
+          <div class="producto-precio">
+            ${{ producto.precio }}
+            {% if producto.precio_antiguo %}
+              <span class="precio-antiguo">${{ producto.precio_antiguo }}</span>
+            {% endif %}
+          </div>
+          <div class="producto-stock">{{ producto.stock }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+<!-- Si no hay resultados -->
+{% else %}
+  <div id="no-resultados" style="text-align: center; margin-top: 2rem;">
+    <p>No se encontraron productos para "{{ busqueda }}".</p>
+  </div>
+{% endif %}
+
+</section>
+
+
+         <!-- Separador SVG -->
+<div class="game-divider" >
+  <svg class="pixel-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <path class="wave-layer" d="M0,0V46.29c47.21,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"></path>
+    <path class="pixel-layer" d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"></path>
+  </svg>
+</div>
+
+<!-- Estructura del footer -->
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+<footer class="footer-section" id="contacto">
+
+  <!-- Contenido principal del footer -->
+  <div class="footer-container">
+    <!-- Columna 1: Logo y descripción -->
+    <div class="footer-column">
+      <div class="footer-logo">
+        <img src="{% static 'tienda/imagenes/xtreme-icono.ico'%}" alt="GameShop Logo">
+        <span>Xtreme Videojuegos</span>
+      </div>
+      <p class="footer-description">
+        Tu tienda de videojuegos favorita con los últimos lanzamientos, consolas y accesorios. 
+        ¡Vive la experiencia gamer al máximo!
+      </p>
+      <div class="footer-social">
+        <a href="#" class="social-icon" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Twitch">
+          <i class="fab fa-twitch"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Discord">
+          <i class="fab fa-discord"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Columna 2: Enlaces rápidos -->
+    <div class="footer-column">
+      <h3 class="footer-title">Explorar</h3>
+      <ul class="footer-links">
+        <li><a href="{% url 'index' %}"><i class="fas fa-chevron-right"></i> Home</a></li>
+        <li><a href="{% url 'productos' %}"><i class="fas fa-chevron-right"></i> Productos</a></li>
+        <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3: Contacto -->
+    <div class="footer-column">
+      <h3 class="footer-title">Contacto</h3>
+      <ul class="footer-contact">
+        <li>
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Calle Gamer 123, Ciudad Digital</span>
+        </li>
+        <li>
+          <i class="fas fa-phone-alt"></i>
+          <span>+1 234 567 890</span>
+        </li>
+        <li>
+          <i class="fas fa-envelope"></i>
+          <span>info@gameshop.com</span>
+        </li>
+        <li>
+          <i class="fas fa-clock"></i>
+          <span>Lun-Vie: 9AM - 8PM<br>Sáb-Dom: 10AM - 6PM</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- Copyright y métodos de pago -->
+  <div class="footer-bottom">
+    <div class="payment-methods">
+      <i class="fab fa-cc-visa"></i>
+      <i class="fab fa-cc-mastercard"></i>
+      <i class="fab fa-cc-paypal"></i>
+      <i class="fab fa-cc-amazon-pay"></i>
+    </div>
+    <div class="copyright">
+      &copy; 2023 Xtreme Videojuegos Todos los derechos reservados. | 
+      <a href="#">Política de Privacidad</a> | 
+      <a href="#">Términos y Condiciones</a>
+    </div>
+  </div>
+
+  <!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/573202126557" class="whatsapp-float" target="_blank" aria-label="Chat de WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+  <span class="whatsapp-tooltip">¿Necesitas ayuda? Chatea con nosotros</span>
+</a>
+
+  <!-- Botón flotante de volver arriba -->
+  <a href="#" class="back-to-top" aria-label="Volver arriba">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="{% static 'tienda/js/main/scroll.js'%}"></script>
+<script src="{% static 'tienda/js/main/particles-footer.js'%}"></script>
+<script src="{% static 'tienda/js/buscador/navbar-toggle-search.js'%}"></script>
+<script src="{% static 'tienda/js/productos-js/filtro.js'%}"></script>
+
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+
+</body>
+</html>

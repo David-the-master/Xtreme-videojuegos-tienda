@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>PlayStation 5 | Xtreme Videojuegos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compra la PlayStation 5 con envío inmediato. La consola de próxima generación con SSD ultrarrápido, gráficos 4K y control DualSense.">
+  
+  <!-- Fuentes y librerías -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="productos-detalle.css">
+</head>
+<body>
+
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+   <!-- encabezado y barra de navefacion de la pagina(header y nav) -->
+<header>
+    <!-- barra de navegacion que se trajo de botstrap, con un logo y enlaces a diferentes secciones de la pagina -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="./imagenes/xtreme-icono.ico" alt="GameShop logo" class="logo">
+                Xtreme Videojuegos
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+
+                <!-- lista de navegacion -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <!-- Inicio -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-door-fill me-1"></i> Inicio
+                        </a>
+                    </li>
+                    <!-- productos -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="./productos.html">
+                            <i class="fas fa-gamepad"></i> Productos
+                        </a>
+                    </li>
+                    
+                    <!-- Contacto -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">
+                            <i class="bi bi-envelope-fill me-1"></i> Contacto
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+
+
+<main>
+  <section>
+    <div class="container">
+    
+    <!-- Main Product Container -->
+    <div class="product-container">
+      <!-- Product Gallery -->
+      <div class="product-gallery">
+        <span class="badge">NUEVO</span>
+        <div class="image-wrapper">
+        <img src="./imagenes/ps5.webp" alt="PlayStation 5 - Vista frontal y lateral" class="main-image" id="mainImage">
+
+        <button class="arrow left" onclick="changeSlide(-1)">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="arrow right" onclick="changeSlide(1)">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+        </div>
+        <div class="thumbnail-container">
+          <img src="./imagenes/nintendo-switch-oled.jpg" alt="Vista frontal" class="thumbnail" onclick="changeImage(this)">
+          <img src="./imagenes/nintendo-switch-2.webp" alt="Vista lateral" class="thumbnail" onclick="changeImage(this)">
+          <img src="./imagenes/xbox-one-s.webp" alt="Vista trasera" class="thumbnail" onclick="changeImage(this)">
+          <img src="./imagenes/xbox-series-s.webp" alt="Control DualSense" class="thumbnail" onclick="changeImage(this)">
+        </div>
+      </div>
+      
+      <!-- Product Info -->
+      <div class="product-info">
+        <span class="category">Consola de videojuegos</span>
+        <h1 class="product-title">PlayStation 5</h1>
+        <p class="product-subtitle">Experimenta una nueva generación de juegos increíbles</p>
+        
+        <div class="rating">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <span class="review-count">(1,248 reseñas)</span>
+        </div>
+        
+        <!-- Price Section -->
+        <div class="price-container">
+          <div>
+            <span class="current-price">$2,499,000</span>
+            <span class="old-price">$2,799,000</span>
+            <span class="discount">10% OFF</span>
+          </div>
+          <div class="stock">
+            <i class="fas fa-check-circle"></i> En stock - Disponible para envío inmediato
+          </div>
+        </div>
+        
+        <!-- Variants -->
+        <div class="variants">
+          <h3 class="variant-title">Selecciona tu versión:</h3>
+          <div class="variant-options">
+            <button class="variant-btn active" data-sku="PS5-STD" data-price="2499000">Estándar (825GB)</button>
+            <button class="variant-btn" data-sku="PS5-1TB" data-price="2799000">Edición 1TB</button>
+            <button class="variant-btn" data-sku="PS5-2TB" data-price="3199000">Edición 2TB</button>
+            <button class="variant-btn" data-sku="PS5-DIGITAL" data-price="2199000">Digital Edition</button>
+          </div>
+        </div>
+        
+        <!-- Key Features -->
+        <div class="features">
+          <div class="feature">
+            <i class="fas fa-bolt feature-icon"></i>
+            <span>SSD ultrarrápido para tiempos de carga casi instantáneos</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-gamepad feature-icon"></i>
+            <span>Control DualSense con retroalimentación háptica avanzada</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-tv feature-icon"></i>
+            <span>Juegos en 4K hasta 120fps con soporte para HDR</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-vr-cardboard feature-icon"></i>
+            <span>Compatibilidad con PlayStation VR2</span>
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+    
+    <!-- Product Tabs -->
+    <div class="tabs">
+      <div class="tab-header">
+        <button class="tab-btn active" data-tab="description">Descripción</button>
+        <button class="tab-btn" data-tab="specs">Especificaciones</button>
+        <button class="tab-btn" data-tab="reviews">Reseñas</button>
+        <button class="tab-btn" data-tab="accessories">Accesorios</button>
+      </div>
+      
+      <div class="tab-content active" id="description">
+        <h2>La Revolución del Gaming</h2><br>
+        <p>La PlayStation 5 representa un salto cuántico en el mundo de los videojuegos, ofreciendo una experiencia de juego completamente inmersiva gracias a su hardware de última generación y tecnologías innovadoras.</p><br>
+        
+        <h3>Características principales:</h3>
+        <ul>
+          <li><strong>Procesador AMD Zen 2 personalizado</strong> con 8 núcleos a 3.5GHz</li>
+          <li><strong>GPU RDNA 2 personalizada</strong> con 10.28 TFLOPS y trazado de rayos</li>
+          <li><strong>SSD NVMe de 825GB</strong> (versión estándar) con velocidad de 5.5GB/s (sin compresión)</li>
+          <li><strong>16GB GDDR6</strong> de memoria unificada</li>
+          <li><strong>Control DualSense</strong> con gatillos adaptables y retroalimentación háptica</li>
+          <li><strong>Compatibilidad con 8K</strong> (preparada para futuras actualizaciones)</li>
+          <li><strong>Tempest 3D AudioTech</strong> para sonido inmersivo</li>
+        </ul><br>
+        
+        <p>La PS5 no solo ofrece gráficos impresionantes, sino que redefine la forma en que experimentas los juegos a través de la tecnología de retroalimentación háptica del mando DualSense, que te permite sentir la tensión de tus acciones, desde apretar un gatillo hasta deslizarte por el hielo.</p>
+      </div>
+      
+      <div class="tab-content" id="specs">
+        <div class="specs-grid">
+          <div class="spec-item">
+            <div class="spec-title">Procesador</div>
+            <div class="spec-value">AMD Zen 2, 8 núcleos a 3.5GHz</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-title">GPU</div>
+            <div class="spec-value">AMD RDNA 2, 10.28 TFLOPS</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-title">Memoria</div>
+            <div class="spec-value">16GB GDDR6</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-title">Almacenamiento</div>
+            <div class="spec-value">SSD NVMe 825GB (Expandible)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-title">Resolución</div>
+            <div class="spec-value">Hasta 8K (4K @ 120Hz actual)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-title">Audio</div>
+            <div class="spec-value">Tempest 3D AudioTech</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-title">Puertos</div>
+            <div class="spec-value">USB-C, USB-A, HDMI 2.1</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-title">Dimensiones</div>
+            <div class="spec-value">390 × 104 × 260 mm</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-title">Peso</div>
+            <div class="spec-value">4.5 kg</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-title">Conectividad</div>
+            <div class="spec-value">Wi-Fi 6, Bluetooth 5.1, Ethernet</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="reviews">
+        <h2>Opiniones de clientes</h2>
+        <p>Esta sección mostraría las reseñas de los usuarios...</p>
+      </div>
+      
+      <div class="tab-content" id="accessories">
+        <h2>Accesorios compatibles</h2>
+        <p>Esta sección mostraría accesorios recomendados...</p>
+      </div>
+    </div>
+    
+    <!-- Video Section -->
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/RkC0l4iekYo?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    
+    <!-- Back Button -->
+    <a href="productos.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i>
+      Volver a todos los productos
+    </a>
+  </div>
+  </section>
+</main>
+
+
+
+
+<!-- Estructura del footer -->
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+<footer class="footer-section" id="contacto">
+
+  <!-- Contenido principal del footer -->
+  <div class="footer-container">
+    <!-- Columna 1: Logo y descripción -->
+    <div class="footer-column">
+      <div class="footer-logo">
+        <img src="./imagenes/xtreme-icono.ico" alt="GameShop Logo">
+        <span>GameShop</span>
+      </div>
+      <p class="footer-description">
+        Tu tienda de videojuegos favorita con los últimos lanzamientos, consolas y accesorios. 
+        ¡Vive la experiencia gamer al máximo!
+      </p>
+      <div class="footer-social">
+        <a href="#" class="social-icon" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Twitch">
+          <i class="fab fa-twitch"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Discord">
+          <i class="fab fa-discord"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Columna 2: Enlaces rápidos -->
+    <div class="footer-column">
+      <h3 class="footer-title">Explorar</h3>
+      <ul class="footer-links">
+        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+        <li><a href="#quienes-somos"><i class="fas fa-chevron-right"></i> Quiénes Somos</a></li>
+        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Servicios</a></li>
+        <li><a href="#productos"><i class="fas fa-chevron-right"></i> Productos</a></li>
+        <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 4: Contacto -->
+    <div class="footer-column">
+      <h3 class="footer-title">Contacto</h3>
+      <ul class="footer-contact">
+        <li>
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Calle Gamer 123, Ciudad Digital</span>
+        </li>
+        <li>
+          <i class="fas fa-phone-alt"></i>
+          <span>+1 234 567 890</span>
+        </li>
+        <li>
+          <i class="fas fa-envelope"></i>
+          <span>info@gameshop.com</span>
+        </li>
+        <li>
+          <i class="fas fa-clock"></i>
+          <span>Lun-Vie: 9AM - 8PM<br>Sáb-Dom: 10AM - 6PM</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- Copyright y métodos de pago -->
+  <div class="footer-bottom">
+    <div class="payment-methods">
+      <i class="fab fa-cc-visa"></i>
+      <i class="fab fa-cc-mastercard"></i>
+      <i class="fab fa-cc-paypal"></i>
+      <i class="fab fa-cc-amazon-pay"></i>
+    </div>
+    <div class="copyright">
+      &copy; 2023 GameShop. Todos los derechos reservados. | 
+      <a href="#">Política de Privacidad</a> | 
+      <a href="#">Términos y Condiciones</a>
+    </div>
+  </div>
+
+  <!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/573202126557" class="whatsapp-float" target="_blank" aria-label="Chat de WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+  <span class="whatsapp-tooltip">¿Necesitas ayuda? Chatea con nosotros</span>
+</a>
+
+  <!-- Botón flotante de volver arriba -->
+  <a href="#" class="back-to-top" aria-label="Volver arriba">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+</footer>
+
+
+<!-- Modal Producto -->
+<div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productoModalLabel">Detalles del producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="contenido-modal">
+        <!-- Aquí se inyectará la información del producto -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="producto-detalle.js"></script>
+  <script src="carrousel.js"></script>
+</body>
+</html>
