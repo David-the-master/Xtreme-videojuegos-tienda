@@ -1,64 +1,196 @@
+{% load static %}
+{% load formato_precio %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>PlayStation 5 | Xtreme Videojuegos</title>
+  <title>{{ producto.nombre }} | Xtreme Videojuegos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Compra la PlayStation 5 con envío inmediato. La consola de próxima generación con SSD ultrarrápido, gráficos 4K y control DualSense.">
-  
+  <meta name="description" content="{{ producto.descripcion|truncatewords:25 }}">
+
   <!-- Fuentes y librerías -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  
-  <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="productos-detalle.css">
+
+  <link rel="stylesheet" href="{% static 'tienda/css/css-descripcion/productos-detalle.css' %}">
+  <link rel="stylesheet" href="{% static 'tienda/css/main/whatsapp.css'%}">
 </head>
 <body>
 
 <!-- --------------------------------------------------------------------------------------------------------------- -->
    <!-- encabezado y barra de navefacion de la pagina(header y nav) -->
 <header>
-    <!-- barra de navegacion que se trajo de botstrap, con un logo y enlaces a diferentes secciones de la pagina -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="./imagenes/xtreme-icono.ico" alt="GameShop logo" class="logo">
-                Xtreme Videojuegos
+<!-- NAVBAR DESKTOP -->
+<nav id="navbar-desktop" class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container-nav">
+
+    <!-- Logo y marca -->
+    <a href="{% url 'index' %}" class="navbar-brand" aria-label="Inicio - Xtreme Videojuegos">
+      <img src="{% static 'tienda/imagenes/xtreme-icono.ico'%}" alt="Logo de Xtreme Videojuegos" class="logo">
+      Xtreme Videojuegos
+    </a>
+
+    <!-- Botón de hamburguesa móvil -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menú de navegación -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' %}">
+            <i class="bi bi-house-door-fill me-1"></i>
+            Home
+          </a>
+        </li>
+
+
+<!-- Catálogo (Dropdown dinámico con Iconify) -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="catalogoDropdown" role="button"
+     data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="iconify me-1" data-icon="mdi:gamepad-variant" data-width="20" data-height="20" style="color: white;"></span>
+    Nuestro Catálogo
+  </a>
+  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="catalogoDropdown">
+    <li>
+      <a class="dropdown-item" href="{% url 'productos' %}">
+        <span class="iconify me-2" data-icon="mdi:apps" data-width="20" data-height="20" style="color: white;"></span>
+        Todos los productos
+      </a>
+    </li>
+    {% for categoria in categorias %}
+      <li>
+        <a class="dropdown-item" href="{% url 'productos' %}?categoria={{ categoria.slug }}">
+          <span class="iconify me-2" data-icon="{{ categoria.icono }}" data-width="20" data-height="20" style="color: white;"></span>
+          {{ categoria.nombre }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</li>
+        <!-- Contacto directo -->
+        <li class="nav-item">
+          <a class="nav-link" href="#contacto">
+            <i class="bi bi-envelope-fill me-1"></i>
+            Contacto
+          </a>
+        </li>
+      </ul>
+
+      <!-- Ícono de búsqueda -->
+      <div class="navbar-search ms-3">
+        <i id="toggleSearch" class="fas fa-search search-toggle" style="cursor: pointer;" aria-label="Buscar productos"></i>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+  <!-- Barra de búsqueda flotante -->
+  <div class="floating-search" id="floatingSearch">
+    <div class="search-container">
+      <span class="close-search" id="closeSearch">&times;</span>
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="floatingSearchInput" placeholder="Buscar productos..." class="search-input">
+      <i class="fas fa-search search-icon" id="floatingSearchIcon"></i>
+    </div>
+  </div>
+
+
+
+
+<!-- Navbar móvil con offcanvas personalizado (0 - 1024px) -->
+<nav id="navbar-mobile" class="navbar fixed-top d-xl-none d-lg-none d-md-block d-sm-block d-xs-block">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}">
+      <img src="{% static 'tienda/imagenes/xtreme-icono.ico'%}" alt="GameShop logo" class="me-2">
+      <span class="brand-text">Xtreme Videojuegos</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenedor Offcanvas -->
+    <div class="offcanvas offcanvas-end text-bg-dark offcanvas-mobile-width" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menú</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}"  >
+              <i class="fas fa-home me-2"></i>Inicio
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#quienes-somos" id="link-quienes">
+              <i class="fas fa-users me-2"></i>Quiénes somos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#servicios">
+              <i class="fas fa-tools me-2"></i>Servicios
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacto">
+              <i class="fas fa-envelope me-2"></i>Contacto
+            </a>
+          </li>
 
+<!-- Dropdown Catálogo (Versión móvil) -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="catalogoDropdownMobile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="iconify me-1" data-icon="mdi:gamepad-variant" data-width="20" data-height="20" style="color: white;"></span>
+    Catálogo
+  </a>
+  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="catalogoDropdownMobile">
+    <li>
+      <a class="dropdown-item" href="{% url 'productos' %}">
+        <span class="iconify me-2" data-icon="mdi:apps" data-width="20" data-height="20" style="color: white;"></span>
+        Todos los productos
+      </a>
+    </li>
+    {% for categoria in categorias %}
+      <li>
+        <a class="dropdown-item" href="{% url 'productos' %}?categoria={{ categoria.slug }}">
+          <span class="iconify me-2" data-icon="{{ categoria.icono }}" data-width="20" data-height="20" style="color: white;"></span>
+          {{ categoria.nombre }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</li>
 
-                <!-- lista de navegacion -->
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <!-- Inicio -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="bi bi-house-door-fill me-1"></i> Inicio
-                        </a>
-                    </li>
-                    <!-- productos -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="./productos.html">
-                            <i class="fas fa-gamepad"></i> Productos
-                        </a>
-                    </li>
-                    
-                    <!-- Contacto -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contacto">
-                            <i class="bi bi-envelope-fill me-1"></i> Contacto
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+        </ul>
+
+<!-- Buscador para mobile (sidebar) -->
+<div class="search-container mt-4">
+  <input type="text" id="floatingSearchInputMobile" placeholder="Buscar productos..." class="search-input-mobile">
+  <button id="floatingSearchBtnMobile" class="search-button-mobile">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
 </header>
+
 
 
 
@@ -67,191 +199,165 @@
 <main>
   <section>
     <div class="container">
-    
-    <!-- Main Product Container -->
-    <div class="product-container">
-      <!-- Product Gallery -->
-      <div class="product-gallery">
-        <span class="badge">NUEVO</span>
-        <div class="image-wrapper">
-        <img src="./imagenes/ps5.webp" alt="PlayStation 5 - Vista frontal y lateral" class="main-image" id="mainImage">
 
-        <button class="arrow left" onclick="changeSlide(-1)">
-      <i class="fas fa-chevron-left"></i>
-    </button>
-    <button class="arrow right" onclick="changeSlide(1)">
-      <i class="fas fa-chevron-right"></i>
-    </button>
+      <div class="product-container">
+        <!-- Galería -->
+        <div class="product-gallery">
+          {% if producto.etiqueta %}
+            <span class="badge">{{ producto.etiqueta }}</span>
+          {% endif %}
+          <div class="image-wrapper">
+            {% if imagenes %}
+              <img src="{{ imagenes.0.imagen.url }}" alt="{{ producto.nombre }}" class="main-image" id="mainImage">
+              <div class="zoom-lens" id="zoomLens"></div>
+            {% else %}
+              <img src="{% static 'tienda/img/no-image.png' %}" alt="Sin imagen" class="main-image">
+            {% endif %}
+
+            <button class="arrow left" onclick="changeSlide(-1)">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="arrow right" onclick="changeSlide(1)">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <div class="thumbnail-container">
+            {% for img in imagenes %}
+              <img src="{{ img.imagen.url }}" alt="{{ producto.nombre }} vista" class="thumbnail" onclick="changeImage(this)">
+            {% endfor %}
+          </div>
         </div>
-        <div class="thumbnail-container">
-          <img src="./imagenes/nintendo-switch-oled.jpg" alt="Vista frontal" class="thumbnail" onclick="changeImage(this)">
-          <img src="./imagenes/nintendo-switch-2.webp" alt="Vista lateral" class="thumbnail" onclick="changeImage(this)">
-          <img src="./imagenes/xbox-one-s.webp" alt="Vista trasera" class="thumbnail" onclick="changeImage(this)">
-          <img src="./imagenes/xbox-series-s.webp" alt="Control DualSense" class="thumbnail" onclick="changeImage(this)">
+
+        <!-- Info producto -->
+        <div class="product-info">
+          {% if producto.detalle.titulo_superior %}
+            <span class="category">{{ producto.detalle.titulo_superior }}</span>
+          {% else %}
+            <span class="category">{{ producto.categoria.nombre }}</span>
+          {% endif %}
+
+          {% if producto.detalle.titulo_personalizado %}
+            <h1 class="product-title">{{ producto.detalle.titulo_personalizado }}</h1>
+          {% else %}
+            <h1 class="product-title">{{ producto.nombre }}</h1>
+          {% endif %}
+
+          {% if producto.detalle.subtitulo %}
+            <p class="product-subtitle">{{ producto.detalle.subtitulo }}</p>
+          {% endif %}
+
+          <div class="price-container">
+            <div>
+              <span class="current-price" id="precio-actual">{{ producto.precio|formato_pesos_col }}</span>
+              {% if producto.precio_antiguo %}
+                <span class="old-price" id="precio-antiguo">{{ producto.precio_antiguo|formato_pesos_col }}</span>
+                <span class="discount" id="porcentaje-descuento">{{ descuento }}% OFF</span>
+              {% else %}
+                <span class="old-price" id="precio-antiguo" style="display: none;"></span>
+                <span class="discount" id="porcentaje-descuento" style="display: none;"></span>
+              {% endif %}
+            </div>
+            <div class="stock">
+              {% if producto.stock %}
+                <i class="fas fa-check-circle"></i> {{ producto.stock }}
+              {% else %}
+                <i class="fas fa-times-circle"></i> Producto agotado
+              {% endif %}
+            </div>
+          </div>
+
+
+          {% if variantes %}
+          <div class="variants">
+            <h3 class="variant-title">Versiones Disponibles:</h3>
+            <div class="variant-options">
+              <button class="variant-btn active"
+                      data-sku="{{ producto.sku }}"
+                      data-price="{{ producto.precio|floatformat:2 }}"
+                      data-old-price="{{ producto.precio_antiguo|default_if_none:''|floatformat:2 }}">
+                {{ producto.nombre_variante_estandar }}
+              </button>
+
+              {% for variante in variantes %}
+                <button class="variant-btn"
+                        type="button"
+                        data-sku="{{ variante.sku }}"
+                        data-price="{{ variante.precio|floatformat:2 }}"
+                        data-old-price="{{ variante.precio_antiguo|default_if_none:''|floatformat:2 }}">
+                  {{ variante.nombre }}
+                </button>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+          <p id="sku-variante" class="sku-info">SKU: {{ producto.sku }}</p>
+
+
+
+          {% if producto.detalle.caracteristicas %}
+            <div class="features">
+              {{ producto.detalle.caracteristicas|linebreaks }}
+            </div>
+          {% endif %}
         </div>
       </div>
-      
-      <!-- Product Info -->
-      <div class="product-info">
-        <span class="category">Consola de videojuegos</span>
-        <h1 class="product-title">PlayStation 5</h1>
-        <p class="product-subtitle">Experimenta una nueva generación de juegos increíbles</p>
-        
-        <div class="rating">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <span class="review-count">(1,248 reseñas)</span>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <div class="tab-header">
+          <button class="tab-btn active" data-tab="description">Descripción</button>
+          <button class="tab-btn" data-tab="specs">Especificaciones</button>
+          <button class="tab-btn" data-tab="reviews">Reseñas</button>
+          <button class="tab-btn" data-tab="accessories">Accesorios</button>
         </div>
-        
-        <!-- Price Section -->
-        <div class="price-container">
-          <div>
-            <span class="current-price">$2,499,000</span>
-            <span class="old-price">$2,799,000</span>
-            <span class="discount">10% OFF</span>
-          </div>
-          <div class="stock">
-            <i class="fas fa-check-circle"></i> En stock - Disponible para envío inmediato
-          </div>
+
+        <div class="tab-content active" id="description">
+          {% if producto.detalle.descripcion_larga %}
+            {{ producto.detalle.descripcion_larga|linebreaks }}
+          {% else %}
+            <p>Este producto aún no tiene descripción detallada.</p>
+          {% endif %}
         </div>
-        
-        <!-- Variants -->
-        <div class="variants">
-          <h3 class="variant-title">Selecciona tu versión:</h3>
-          <div class="variant-options">
-            <button class="variant-btn active" data-sku="PS5-STD" data-price="2499000">Estándar (825GB)</button>
-            <button class="variant-btn" data-sku="PS5-1TB" data-price="2799000">Edición 1TB</button>
-            <button class="variant-btn" data-sku="PS5-2TB" data-price="3199000">Edición 2TB</button>
-            <button class="variant-btn" data-sku="PS5-DIGITAL" data-price="2199000">Digital Edition</button>
-          </div>
+
+        <div class="tab-content" id="specs">
+          {% if producto.detalle.especificaciones %}
+            {{ producto.detalle.especificaciones|safe }}
+          {% else %}
+            <p>No se han especificado las características técnicas.</p>
+          {% endif %}
         </div>
-        
-        <!-- Key Features -->
-        <div class="features">
-          <div class="feature">
-            <i class="fas fa-bolt feature-icon"></i>
-            <span>SSD ultrarrápido para tiempos de carga casi instantáneos</span>
-          </div>
-          <div class="feature">
-            <i class="fas fa-gamepad feature-icon"></i>
-            <span>Control DualSense con retroalimentación háptica avanzada</span>
-          </div>
-          <div class="feature">
-            <i class="fas fa-tv feature-icon"></i>
-            <span>Juegos en 4K hasta 120fps con soporte para HDR</span>
-          </div>
-          <div class="feature">
-            <i class="fas fa-vr-cardboard feature-icon"></i>
-            <span>Compatibilidad con PlayStation VR2</span>
-          </div>
+
+        <div class="tab-content" id="reviews">
+          <h2>Opiniones de clientes</h2>
+          <p>Esta sección mostraría las reseñas de los usuarios...</p>
         </div>
-        
-        
+
+        <div class="tab-content" id="accessories">
+          {% if producto.detalle.accesorios %}
+            {{ producto.detalle.accesorios|linebreaks }}
+          {% else %}
+            <p>No hay accesorios adicionales registrados.</p>
+          {% endif %}
+        </div>
       </div>
+
+      <!-- Video -->
+      {% if producto.detalle.video_url %}
+        <div class="video-container">
+          <iframe src="{{ producto.detalle.video_url }}" frameborder="0" allowfullscreen></iframe>
+        </div>
+      {% endif %}
+
+      <!-- Botón volver -->
+      <a href="{% url 'productos' %}" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+        Volver a todos los productos
+      </a>
     </div>
-    
-    <!-- Product Tabs -->
-    <div class="tabs">
-      <div class="tab-header">
-        <button class="tab-btn active" data-tab="description">Descripción</button>
-        <button class="tab-btn" data-tab="specs">Especificaciones</button>
-        <button class="tab-btn" data-tab="reviews">Reseñas</button>
-        <button class="tab-btn" data-tab="accessories">Accesorios</button>
-      </div>
-      
-      <div class="tab-content active" id="description">
-        <h2>La Revolución del Gaming</h2><br>
-        <p>La PlayStation 5 representa un salto cuántico en el mundo de los videojuegos, ofreciendo una experiencia de juego completamente inmersiva gracias a su hardware de última generación y tecnologías innovadoras.</p><br>
-        
-        <h3>Características principales:</h3>
-        <ul>
-          <li><strong>Procesador AMD Zen 2 personalizado</strong> con 8 núcleos a 3.5GHz</li>
-          <li><strong>GPU RDNA 2 personalizada</strong> con 10.28 TFLOPS y trazado de rayos</li>
-          <li><strong>SSD NVMe de 825GB</strong> (versión estándar) con velocidad de 5.5GB/s (sin compresión)</li>
-          <li><strong>16GB GDDR6</strong> de memoria unificada</li>
-          <li><strong>Control DualSense</strong> con gatillos adaptables y retroalimentación háptica</li>
-          <li><strong>Compatibilidad con 8K</strong> (preparada para futuras actualizaciones)</li>
-          <li><strong>Tempest 3D AudioTech</strong> para sonido inmersivo</li>
-        </ul><br>
-        
-        <p>La PS5 no solo ofrece gráficos impresionantes, sino que redefine la forma en que experimentas los juegos a través de la tecnología de retroalimentación háptica del mando DualSense, que te permite sentir la tensión de tus acciones, desde apretar un gatillo hasta deslizarte por el hielo.</p>
-      </div>
-      
-      <div class="tab-content" id="specs">
-        <div class="specs-grid">
-          <div class="spec-item">
-            <div class="spec-title">Procesador</div>
-            <div class="spec-value">AMD Zen 2, 8 núcleos a 3.5GHz</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-title">GPU</div>
-            <div class="spec-value">AMD RDNA 2, 10.28 TFLOPS</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-title">Memoria</div>
-            <div class="spec-value">16GB GDDR6</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-title">Almacenamiento</div>
-            <div class="spec-value">SSD NVMe 825GB (Expandible)</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-title">Resolución</div>
-            <div class="spec-value">Hasta 8K (4K @ 120Hz actual)</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-title">Audio</div>
-            <div class="spec-value">Tempest 3D AudioTech</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-title">Puertos</div>
-            <div class="spec-value">USB-C, USB-A, HDMI 2.1</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-title">Dimensiones</div>
-            <div class="spec-value">390 × 104 × 260 mm</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-title">Peso</div>
-            <div class="spec-value">4.5 kg</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-title">Conectividad</div>
-            <div class="spec-value">Wi-Fi 6, Bluetooth 5.1, Ethernet</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="tab-content" id="reviews">
-        <h2>Opiniones de clientes</h2>
-        <p>Esta sección mostraría las reseñas de los usuarios...</p>
-      </div>
-      
-      <div class="tab-content" id="accessories">
-        <h2>Accesorios compatibles</h2>
-        <p>Esta sección mostraría accesorios recomendados...</p>
-      </div>
-    </div>
-    
-    <!-- Video Section -->
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/RkC0l4iekYo?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    
-    <!-- Back Button -->
-    <a href="productos.html" class="back-btn">
-      <i class="fas fa-arrow-left"></i>
-      Volver a todos los productos
-    </a>
-  </div>
   </section>
 </main>
-
 
 
 
@@ -264,8 +370,8 @@
     <!-- Columna 1: Logo y descripción -->
     <div class="footer-column">
       <div class="footer-logo">
-        <img src="./imagenes/xtreme-icono.ico" alt="GameShop Logo">
-        <span>GameShop</span>
+        <img src="{% static 'tienda/imagenes/xtreme-icono.ico'%}" alt="GameShop Logo">
+        <span>Xtreme Videojuegos</span>
       </div>
       <p class="footer-description">
         Tu tienda de videojuegos favorita con los últimos lanzamientos, consolas y accesorios. 
@@ -294,15 +400,15 @@
     <div class="footer-column">
       <h3 class="footer-title">Explorar</h3>
       <ul class="footer-links">
-        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+        <li><a href="{% url 'index' %}"><i class="fas fa-chevron-right"></i> Inicio</a></li>
         <li><a href="#quienes-somos"><i class="fas fa-chevron-right"></i> Quiénes Somos</a></li>
         <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Servicios</a></li>
-        <li><a href="#productos"><i class="fas fa-chevron-right"></i> Productos</a></li>
+        <li><a href="{% url 'productos' %}"><i class="fas fa-chevron-right"></i> Productos</a></li>
         <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
       </ul>
     </div>
 
-    <!-- Columna 4: Contacto -->
+    <!-- Columna 3: Contacto -->
     <div class="footer-column">
       <h3 class="footer-title">Contacto</h3>
       <ul class="footer-contact">
@@ -336,7 +442,7 @@
       <i class="fab fa-cc-amazon-pay"></i>
     </div>
     <div class="copyright">
-      &copy; 2023 GameShop. Todos los derechos reservados. | 
+      &copy; 2023 Xtreme Videojuegos Todos los derechos reservados. | 
       <a href="#">Política de Privacidad</a> | 
       <a href="#">Términos y Condiciones</a>
     </div>
@@ -355,25 +461,105 @@
 </footer>
 
 
-<!-- Modal Producto -->
-<div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="productoModalLabel">Detalles del producto</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body" id="contenido-modal">
-        <!-- Aquí se inyectará la información del producto -->
-      </div>
-    </div>
-  </div>
-</div>
 
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="producto-detalle.js"></script>
-  <script src="carrousel.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="{% static 'tienda/js/descripcion-producto/detalles.js' %}"></script>
+<script src="{% static 'tienda/js/descripcion-producto/carrousel.js' %}"></script>
+<script src="{% static 'tienda/js/main/particles-footer.js'%}"></script>
+<script src="{% static 'tienda/js/main/scroll.js'%}"></script>
+<script src="{% static 'tienda/js/descripcion-producto/producto-detalle.js' %}"></script>
+<script src="{% static 'tienda/js/buscador/navbar-toggle-search.js'%}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const mainImage = document.getElementById('mainImage');
+  const zoomLens = document.getElementById('zoomLens');
+  const wrapper = document.querySelector('.image-wrapper');
+  const thumbnails = document.querySelectorAll('.thumbnail');
+
+  let zoomActivo = false;
+
+  // Activar o desactivar zoom con clic (evita flechas)
+  wrapper.addEventListener('click', function (e) {
+    if (e.target.closest('button.arrow')) return; // ← Ignora clics en flechas
+
+    zoomActivo = !zoomActivo;
+
+    if (zoomActivo) {
+      zoomLens.style.display = 'block';
+      wrapper.style.cursor = 'zoom-out';
+    } else {
+      zoomLens.style.display = 'none';
+      wrapper.style.cursor = 'zoom-in';
+    }
+  });
+
+  // Mostrar lente de zoom si está activo
+  wrapper.addEventListener('mousemove', function (e) {
+    if (!zoomActivo) return;
+
+    const rect = wrapper.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const lensWidth = zoomLens.offsetWidth;
+    const lensHeight = zoomLens.offsetHeight;
+
+    let left = x - lensWidth / 2;
+    let top = y - lensHeight / 2;
+
+    left = Math.max(0, Math.min(left, wrapper.offsetWidth - lensWidth));
+    top = Math.max(0, Math.min(top, wrapper.offsetHeight - lensHeight));
+
+    zoomLens.style.left = `${left}px`;
+    zoomLens.style.top = `${top}px`;
+
+    zoomLens.style.backgroundImage = `url('${mainImage.src}')`;
+    zoomLens.style.backgroundSize = `${mainImage.width * 2}px ${mainImage.height * 2}px`;
+    zoomLens.style.backgroundPosition = `-${x * 2 - lensWidth / 2}px -${y * 2 - lensHeight / 2}px`;
+  });
+
+  wrapper.addEventListener('mouseleave', function () {
+    if (zoomActivo) {
+      zoomLens.style.display = 'none';
+    }
+  });
+
+  // Cuando cambia la imagen: actualiza fondo del zoom
+  function updateZoomBackground() {
+    zoomLens.style.backgroundImage = `url('${mainImage.src}')`;
+  }
+
+  // Carousel: imágenes desde thumbnails
+  let imageSources = [];
+  let currentIndex = 0;
+
+  thumbnails.forEach((thumb) => {
+    imageSources.push(thumb.src);
+  });
+
+  window.changeSlide = function (direction) {
+    currentIndex = (currentIndex + direction + imageSources.length) % imageSources.length;
+    mainImage.src = imageSources[currentIndex];
+    updateZoomBackground();
+
+    thumbnails.forEach(t => t.classList.remove('active-thumbnail'));
+    thumbnails[currentIndex].classList.add('active-thumbnail');
+  }
+
+  window.changeImage = function (element) {
+    mainImage.src = element.src;
+    currentIndex = imageSources.indexOf(element.src);
+    updateZoomBackground();
+
+    thumbnails.forEach(t => t.classList.remove('active-thumbnail'));
+    element.classList.add('active-thumbnail');
+  }
+});
+</script>
+
 </body>
 </html>

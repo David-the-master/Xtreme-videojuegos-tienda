@@ -389,6 +389,13 @@ body {
   overflow: visible;
 }
 
+.producto-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+
 /* Grid */
 .productos-grid {
   display: grid;

@@ -1,4 +1,5 @@
 {% load static %}
+{% load formato_precio %}
 
 <!DOCTYPE html>
 <html lang="es">
@@ -187,50 +188,48 @@
 <section class="section-productos" id="productos">
   <h2 class="section-title">¡Elige Tu Próxima <span>Aventura!</span></h2>
 
+  {% if busqueda %}
+    <h2 class="titulo-busqueda">Resultados para "{{ busqueda }}"</h2>
+  {% endif %}
 
-<!-- Mostrar título si hay búsqueda -->
-{% if busqueda %}
-  <h2 class="titulo-busqueda">Resultados para "{{ busqueda }}"</h2>
-{% endif %}
-
-<!-- Si hay productos, se muestran -->
-{% if productos %}
-  <div class="productos-grid">
-    {% for producto in productos %}
-      <div class="producto-card {{ producto.categoria.slug }}">
-        {% if producto.etiqueta %}
-          <div class="producto-badge">{{ producto.etiqueta }}</div>
-        {% endif %}
-
-        {% if producto.imagen %}
-          <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" loading="lazy">
-        {% else %}
-          <img src="{% static 'tienda/img/no-image.png' %}" alt="Sin imagen">
-        {% endif %}
-
-        <div class="producto-info">
-          <h3>{{ producto.nombre }}</h3>
-          <p class="producto-desc">{{ producto.descripcion }}</p>
-          <div class="producto-precio">
-            ${{ producto.precio }}
-            {% if producto.precio_antiguo %}
-              <span class="precio-antiguo">${{ producto.precio_antiguo }}</span>
+  {% if productos %}
+    <div class="productos-grid">
+      {% for producto in productos %}
+        <a href="{% url 'producto_detalle' producto.slug %}" class="producto-card-link">
+          <div class="producto-card {{ producto.categoria.slug }}">
+            {% if producto.etiqueta %}
+              <div class="producto-badge">{{ producto.etiqueta }}</div>
             {% endif %}
+
+            {% if producto.imagen %}
+              <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" loading="lazy">
+            {% else %}
+              <img src="{% static 'tienda/img/no-image.png' %}" alt="Sin imagen">
+            {% endif %}
+
+            <div class="producto-info">
+              <h3>{{ producto.nombre }}</h3>
+              <p class="producto-desc">{{ producto.descripcion|truncatechars:80 }}</p>
+              <div class="producto-precio">
+                {{ producto.precio|formato_pesos_col }}
+                {% if producto.precio_antiguo %}
+                  <span class="precio-antiguo">{{ producto.precio_antiguo|formato_pesos_col }}</span>
+                {% endif %}
+              </div>
+              <div class="producto-stock">{{ producto.stock }}</div>
+            </div>
           </div>
-          <div class="producto-stock">{{ producto.stock }}</div>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-
-<!-- Si no hay resultados -->
-{% else %}
-  <div id="no-resultados" style="text-align: center; margin-top: 2rem;">
-    <p>No se encontraron productos para "{{ busqueda }}".</p>
-  </div>
-{% endif %}
-
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div id="no-resultados" style="text-align: center; margin-top: 2rem;">
+      <p>No se encontraron productos para "{{ busqueda }}".</p>
+    </div>
+  {% endif %}
 </section>
+
+
 
 
          <!-- Separador SVG -->

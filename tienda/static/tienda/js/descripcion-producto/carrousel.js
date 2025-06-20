@@ -1,21 +1,28 @@
+const thumbnails = document.querySelectorAll('.thumbnail');
+const mainImage = document.getElementById('mainImage');
+let currentIndex = 0;
+let imageSources = [];
 
-  const images = [
-    "./imagenes/ps5.webp",
-    "./imagenes/nintendo-switch-oled.jpg",
-    "./imagenes/nintendo-switch-2.webp",
-    "./imagenes/xbox-one-s.webp"
-  ];
+// Rellenar imageSources con las imágenes visibles (orden correcto)
+thumbnails.forEach((thumb) => {
+  imageSources.push(thumb.src);
+});
 
-  let currentIndex = 0;
-  const mainImage = document.getElementById("mainImage");
+// Botones de navegación izquierda/derecha
+function changeSlide(direction) {
+  currentIndex = (currentIndex + direction + imageSources.length) % imageSources.length;
+  mainImage.src = imageSources[currentIndex];
 
-  function changeSlide(direction) {
-    currentIndex = (currentIndex + direction + images.length) % images.length;
-    mainImage.src = images[currentIndex];
-  }
+  // Actualizar miniatura activa
+  thumbnails.forEach(t => t.classList.remove('active-thumbnail'));
+  thumbnails[currentIndex].classList.add('active-thumbnail');
+}
 
-  function goToSlide(index) {
-    currentIndex = index;
-    mainImage.src = images[currentIndex];
-  }
+// Clic directo en una miniatura
+function changeImage(element) {
+  mainImage.src = element.src;
+  currentIndex = imageSources.indexOf(element.src);
 
+  thumbnails.forEach(t => t.classList.remove('active-thumbnail'));
+  element.classList.add('active-thumbnail');
+}

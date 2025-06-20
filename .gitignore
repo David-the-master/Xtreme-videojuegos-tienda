@@ -1,10 +1,11 @@
-# Entorno virtual
+# Entornos virtuales
 env/
 venv/
 
 # Archivos y carpetas de Python
 __pycache__/
 *.py[cod]
+*.so
 
 # Base de datos local de desarrollo
 db.sqlite3
@@ -13,15 +14,38 @@ db.sqlite3
 **/migrations/*.pyc
 **/migrations/__pycache__/
 
-# Archivos temporales
+# Archivos temporales y de sistema
 *.log
 *.swp
 *.tmp
-
-# Sistema
 .DS_Store
 Thumbs.db
 
-# Archivos de configuración personal de editores
+# Configuraciones de editores
 .vscode/
 .idea/
+
+# Archivos estáticos y de medios (si los generas en producción)
+staticfiles/
+media/
+
+# Archivos compilados de frontend
+node_modules/
+dist/
+build/
+
+# Variables de entorno y configuraciones sensibles
+.env
+*.env
+
+# Archivos de cobertura de tests
+htmlcov/
+.coverage
+.coverage.*
+
+# Archivos de caché
+*.bak
+*.cache
+*.tgz
+*.gz
+*.zip
