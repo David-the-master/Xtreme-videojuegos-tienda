@@ -14,6 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function cerrarBarraSiClicFuera(event) {
+    // Verifica si la barra está visible y si el clic fue fuera de ella
+    if (floatingSearch.style.display === "block" && !floatingSearch.contains(event.target) && event.target !== toggleSearch) {
+      floatingSearch.style.display = "none";
+    }
+  }
+
   // --- DESKTOP: Abrir/Cerrar barra flotante ---
   if (toggleSearch && floatingSearch) {
     toggleSearch.addEventListener("click", () => {
@@ -35,6 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
       floatingSearch.style.display = "none";
     }
   });
+
+  // Cerrar al hacer clic fuera
+  document.addEventListener("click", cerrarBarraSiClicFuera);
 
   // --- DESKTOP: Buscar al presionar Enter ---
   if (inputSearch) {
