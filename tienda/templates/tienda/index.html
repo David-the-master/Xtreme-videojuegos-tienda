@@ -169,12 +169,12 @@
       <span class="brand-text">Xtreme Videojuegos</span>  <!-- logo y marca de la empresa -->
     </a>
     <!-- Botón de hamburguesa para abrir el offcanvas -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation" >
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Contenedor Offcanvas -->
-    <div class="offcanvas offcanvas-end text-bg-dark offcanvas-mobile-width" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+    <div class="offcanvas offcanvas-end text-bg-dark offcanvas-mobile-width" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel"  data-bs-scroll="true">
       <div class="offcanvas-header"> <!--  menu del side bar-->
         <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menú</h5> 
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
@@ -279,6 +279,7 @@
       </div>
 
       <!-- Botón de universe io adaptado para su uso-->
+
       <a href="{% url 'productos' %}">
         <button>
           P L A Y

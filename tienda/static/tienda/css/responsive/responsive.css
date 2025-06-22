@@ -2364,7 +2364,7 @@
 
 
 
-@media screen and (orientation: landscape) and (max-width: 1024px) {
+@media screen and (orientation: landscape) and (max-height: 500px) {
   /* Navbar */
   .navbar-brand img {
     width: 50px;
@@ -2408,12 +2408,20 @@
 
   height: 100vh;
 }
-
+.hero-title-container{
+  padding-top: 60px;
+}
   /* Ajustes para héroe, textos y secciones */
   .hero-content h1 {
     font-size: 1.8rem;
   }
 
+  .mushroom {
+
+  top: 10px; 
+  left: -60px;
+
+}
   .navbar-nav .nav-link {
     font-size: 0.75rem;
   }
@@ -2535,4 +2543,31 @@
     height: 45px;
     font-size: 0.85rem;
   }
+}
+
+
+@media screen and (orientation: landscape) and (max-height: 380px) {
+  /* Ajustes para evitar que todo quede apretado en pantallas muy bajitas */
+
+  .hero-section {
+    height: auto;
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  .mushroom {
+    margin-top: 30px;
+    width: 45px;
+    height: 45px;
+    left: -40px;
+    top: 5px;
+  }
+
+ 
 }

@@ -204,7 +204,7 @@
 /* Icono de búsqueda */
 .search-icon {
   position: absolute;
-  left: 1.6rem;
+  left: 1.1rem;
   top: 50%;
   transform: translateY(-50%);
   color: #4facfe;
@@ -306,12 +306,6 @@
   }
 
 
-
-  .footer-section {
-    margin-top: 30px;
-    padding-top: 60px;
-  }
-
   .footer-container {
     gap: 5px;
     padding: 0 10px 40px;
@@ -395,6 +389,14 @@
   height: 60px;
   margin-right: 5px;
 }
+
+/* Icono de búsqueda */
+.search-icon {
+  left: 1.3rem;
+
+
+}
+
 
   nav ul li {
     margin: 0 10px;
@@ -537,7 +539,7 @@
 /* Icono de búsqueda */
 .search-icon {
   position: absolute;
-  left: 1.6rem;
+  left: 1.1rem;
   top: 50%;
   transform: translateY(-50%);
   color: #4facfe;
@@ -639,13 +641,6 @@
     padding: 0.35rem 1.1rem;
     border-radius: 25px;
     font-size: 0.9rem;
-  }
-
-
-
-  .footer-section {
-    margin-top: 30px;
-    padding-top: 60px;
   }
 
   .footer-container {
@@ -756,7 +751,7 @@
 /* Icono de búsqueda */
 .search-icon {
   position: absolute;
-  left: 1.6rem;
+  left: 1.1rem;
   top: 50%;
   transform: translateY(-50%);
   color: #4facfe;
@@ -858,13 +853,6 @@
     padding: 0.35rem 1.1rem;
     border-radius: 25px;
     font-size: 0.9rem;
-  }
-
-
-
-  .footer-section {
-    margin-top: 30px;
-    padding-top: 60px;
   }
 
   .footer-container {
@@ -980,7 +968,7 @@
 /* Icono de búsqueda */
 .search-icon {
   position: absolute;
-  left: 1.6rem;
+  left: 1.1rem;
   top: 50%;
   transform: translateY(-50%);
   color: #4facfe;
@@ -1084,13 +1072,6 @@
     font-size: 0.9rem;
   }
 
-
-
-  .footer-section {
-    margin-top: 30px;
-    padding-top: 60px;
-  }
-
   .footer-container {
     gap: 5px;
     padding: 0 10px 40px;
@@ -1155,7 +1136,7 @@
 
 
 /* ========== Tablets horizontales ========== */
-@media (max-width: 1024px) { 
+@media (max-width: 1023px) { 
       html {
     font-size: 14px; /* Reduce un poco la base */
   }
@@ -1411,11 +1392,6 @@
 
   .back-to-top.active {
     top: calc(100vh - 120px); /* Ajusta la posición para que no se superponga con el footer */
-}
-#contacto{
-  scroll-margin-top: 350px;
-  position: relative;
-   overflow: visible;
 }
 
 }
@@ -1809,7 +1785,7 @@
 
 @media (max-width: 340px) {
   .productos-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
     padding: 0 0.5rem;
     justify-items: center;
