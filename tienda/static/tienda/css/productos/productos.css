@@ -48,6 +48,10 @@ body {
   padding: 0 1.5rem;
 }
 
+#navbar-mobile {
+  display: none;
+}
+
 
 .navbar {
   background: var(--nav-bg) !important;

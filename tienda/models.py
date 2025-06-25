@@ -17,8 +17,6 @@ class Categoria(models.Model):
         return self.nombre
 
 
-
-
 class Producto(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.CharField(
@@ -27,8 +25,11 @@ class Producto(models.Model):
     )
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 
-    # Variante estándar (obligatoria)
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    precio = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        help_text="Precio del producto o versión principal"
+    )
     precio_antiguo = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     sku = models.CharField(
         max_length=100,
@@ -36,9 +37,9 @@ class Producto(models.Model):
     )
     nombre_variante_estandar = models.CharField(
         max_length=100,
+        blank=True,
         help_text="Nombre de la variante estándar. Ej: 512GB estándar, Edición base"
     )
-
     stock = models.CharField(
         max_length=100,
         help_text="Ej: En stock, Últimas 3 unidades, Agotado"
@@ -75,35 +76,25 @@ class DescripcionProducto(models.Model):
         blank=True,
         help_text="Texto pequeño superior (Ej: Consola de videojuegos)"
     )
-    
     titulo_personalizado = models.CharField(
         max_length=100,
         blank=True,
         help_text="Título principal grande (Ej: PlayStation 5 Edición Digital)"
     )
-    
     subtitulo = models.CharField(max_length=255, blank=True)
-    
     caracteristicas = models.TextField(
         blank=True,
         help_text="HTML con íconos y características destacadas"
     )
-    
     descripcion_larga = models.TextField(
         blank=True,
         help_text="Texto completo con beneficios y detalles. Usa doble enter para párrafos."
     )
-    
-    especificaciones = models.TextField(
-        blank=True,
-        help_text="HTML o JSON con especificaciones técnicas"
-    )
-    
+    # Eliminamos especificaciones
     accesorios = models.TextField(
         blank=True,
         help_text="Accesorios compatibles u opcionales. Usa doble enter para separar líneas"
     )
-    
     video_url = models.URLField(
         blank=True,
         help_text="URL del video de YouTube o demostración"
@@ -115,6 +106,7 @@ class DescripcionProducto(models.Model):
     class Meta:
         verbose_name = "Descripción avanzada"
         verbose_name_plural = "Descripciones de productos"
+
 
 class VarianteProducto(models.Model):
     descripcion = models.ForeignKey(
@@ -136,3 +128,23 @@ class VarianteProducto(models.Model):
 
     def __str__(self):
         return f"{self.nombre} - {self.descripcion.producto.nombre}"
+
+
+# NUEVO modelo: Especificaciones técnicas como ítems individuales
+class EspecificacionProducto(models.Model):
+    descripcion = models.ForeignKey(
+        DescripcionProducto,
+        on_delete=models.CASCADE,
+        related_name='especificaciones'
+    )
+    titulo = models.CharField(
+        max_length=100,
+        help_text="Ej: Procesador, Memoria, Resolución"
+    )
+    valor = models.CharField(
+        max_length=255,
+        help_text="Ej: AMD Ryzen 5, 1TB SSD, 4K HDR"
+    )
+
+    def __str__(self):
+        return f"{self.titulo}: {self.valor}"

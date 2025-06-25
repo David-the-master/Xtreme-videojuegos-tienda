@@ -1,5 +1,12 @@
 from django.contrib import admin
-from .models import Producto, Categoria, ImagenProducto, DescripcionProducto, VarianteProducto
+from .models import (
+    Producto,
+    Categoria,
+    ImagenProducto,
+    DescripcionProducto,
+    VarianteProducto,
+    EspecificacionProducto  # ← Nuevo modelo
+)
 
 # Galería de imágenes
 class ImagenProductoInline(admin.TabularInline):
@@ -17,6 +24,14 @@ class VarianteProductoInline(admin.TabularInline):
     verbose_name = "Variante adicional"
     verbose_name_plural = "Variantes del producto"
 
+# Nueva sección inline para especificaciones técnicas
+class EspecificacionProductoInline(admin.TabularInline):
+    model = EspecificacionProducto
+    extra = 1
+    fields = ['titulo', 'valor']
+    verbose_name = "Especificación técnica"
+    verbose_name_plural = "Especificaciones del producto"
+
 # Admin de Categoría
 @admin.register(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):
@@ -26,7 +41,7 @@ class CategoriaAdmin(admin.ModelAdmin):
     search_fields = ('nombre',)
     ordering = ['nombre']
 
-# Admin de Producto con variante estándar y galería
+# Admin de Producto con variante estándar (opcional) y galería
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'categoria', 'nombre_variante_estandar', 'precio', 'stock', 'etiqueta')
@@ -34,13 +49,14 @@ class ProductoAdmin(admin.ModelAdmin):
     list_filter = ('categoria', 'etiqueta')
     ordering = ['nombre']
     prepopulated_fields = {'slug': ('nombre',)}
+
     fieldsets = (
         (None, {
             'fields': (
                 'nombre',
                 'descripcion',
                 'categoria',
-                'nombre_variante_estandar',  # ← NUEVO
+                'nombre_variante_estandar',
                 'precio',
                 'precio_antiguo',
                 'sku',
@@ -48,12 +64,14 @@ class ProductoAdmin(admin.ModelAdmin):
                 'imagen',
                 'etiqueta',
                 'slug',
-            )
+            ),
+            'description': "El campo 'Nombre de la variante estándar' es opcional. Úsalo solo si el producto tiene versiones como 512GB, Edición base, etc."
         }),
     )
+
     inlines = [ImagenProductoInline]
 
-# Admin de Descripción avanzada con variantes adicionales
+# Admin de Descripción avanzada con variantes adicionales y especificaciones
 @admin.register(DescripcionProducto)
 class DescripcionProductoAdmin(admin.ModelAdmin):
     list_display = ('producto', 'titulo_superior', 'titulo_personalizado', 'subtitulo')
@@ -63,16 +81,15 @@ class DescripcionProductoAdmin(admin.ModelAdmin):
         (None, {
             'fields': (
                 'producto',
-                'titulo_superior',        # ← NUEVO campo mostrado primero
-                'titulo_personalizado',   # ← Título grande
-                'subtitulo',              # ← Descripción breve
+                'titulo_superior',
+                'titulo_personalizado',
+                'subtitulo',
                 'caracteristicas',
                 'descripcion_larga',
-                'especificaciones',
                 'accesorios',
                 'video_url'
             )
         }),
     )
 
-    inlines = [VarianteProductoInline]
+    inlines = [VarianteProductoInline, EspecificacionProductoInline]
