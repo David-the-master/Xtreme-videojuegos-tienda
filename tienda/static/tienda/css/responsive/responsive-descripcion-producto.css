@@ -1214,6 +1214,15 @@
   aspect-ratio: 4 / 3; /* Ideal para imágenes 1600x1200, 1280x960, etc */
 
 }
+
+  .specs-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    justify-content: center;
+  }
+
+  .spec-item {
+    padding: 12px;
+  }
  /* Footer */
   .footer-container {
     padding: 0 15px 40px;
@@ -1281,8 +1290,17 @@
 
 
 
-@media (max-width: 990px){
+@media (max-width: 827px){
   
+
+    .specs-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    justify-content: center;
+  }
+
+  .spec-item {
+    padding: 12px;
+  }
 
 }
 
@@ -1365,47 +1383,114 @@
 }
 
 @media (max-width: 684px) {
+  /* Container principal en bloque vertical */
+
+  html{
+    font-size: 15px;
+  }
+  .product-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  /* Galería principal arriba */
   .product-gallery {
-    gap: 0.8rem;
-    margin-bottom: 1rem;
-    
+    order: 1;
+    justify-items: center;
   }
 
   .image-wrapper {
-    max-width: 80vw;
+    width: 90%;
+    max-width: 100%;
     aspect-ratio: 4 / 3;
     margin: 0 auto;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   }
 
-.thumbnail-container {
-  display: flex;
-  justify-content: flex-start;  /* Alinea a la izquierda */
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding-left: 3.8rem; /* o el valor que se vea bien */
-}
+  .thumbnail-container {
+    justify-content: center;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+  }
+
   .thumbnail {
-    width: 50px;
-    height: 50px;
+    scroll-snap-align: start;
+  }
+
+  /* Info del producto */
+  .product-info {
+    order: 2;
+    padding: 0;
+  }
+
+  .product-title {
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
+  .product-subtitle,
+  .category,
+  .rating,
+  .price-container,
+  .stock {
+    text-align: left;
   }
 
   .price-container {
-  background: rgba(0, 114, 206, 0.1);
-  padding: 1.4rem;
-  border-radius: 10px;
-  margin: 1.5rem 0;
-  border: 1px solid rgba(0, 114, 206, 0.3);
-  max-width: 60%; /* <-- ajuste clave */
-  width: 100%;
-}
+    padding: 1rem;
+    font-size: 0.95rem;
+    max-width: 75%;
+  }
+
+  .current-price {
+    font-size: 1.4rem;
+  }
+
+  /* Variantes */
+  .variant-options {
+    justify-content: flex-start;
+  }
+
+  /* Especificaciones en una columna */
+  .specs-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    justify-content: center;
+  }
+
+  .spec-item {
+    padding: 12px;
+  }
+
+  /* Tabs */
+  .tab-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tab-btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  /* Video responsivo se mantiene igual */
+.video-container {
+    margin: 2rem auto; /* centrado horizontal con espacio arriba/abajo */
+    max-width: 100%;
+    width: 88%; /* puedes limitar a algo como 95% si no quieres que llegue hasta los bordes */
+    padding-bottom: 59.25%; /* 16:9 Aspect Ratio */
+  }
+  /* Botón volver con margen menor */
+  .back-btn {
+    margin-top: 1rem;
+  }
 } 
 
 /* ========== Teléfonos grandes ========== */
 @media (max-width: 599px) { 
       html {
-    font-size: 13px;
+    font-size: 14px;
   }
 
 .offcanvas-mobile-width  {
@@ -1415,7 +1500,55 @@
 
 .container-fluid {
     padding: 0.5rem ;
-  }  /* Footer */
+  } 
+   /* Footer */
+ .product-container {
+    padding: 0.8rem;
+    gap: 1.5rem;
+  }
+
+  .product-title {
+    font-size: 1.4rem;
+  }
+
+  .product-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .price-container {
+    max-width: 90%;
+    padding: 0.8rem;
+  }
+
+  .current-price {
+    font-size: 1.3rem;
+  }
+
+  .variant-btn {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .specs-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .tab-btn {
+    font-size: 1rem;
+    padding: 8px 10px;
+  }
+
+  .video-container {
+    width: 92%;
+    padding-bottom: 60%;
+  }
+
+
+  .price-container {
+    padding: 1rem;
+    font-size: 0.95rem;
+    max-width: 80%;
+  }
 
    .footer-container {
     grid-template-columns: 1fr 1fr;
@@ -1486,17 +1619,207 @@
 /* ========== Teléfonos pequeños ========== */
 @media (max-width: 480px) { 
       html {
-    font-size: 14px;
+    font-size: 15px;
   }
 
+   .tabs {
+    display: none;
+  }
+
+  .mobile-accordion {
+    display: block;
+  }
   .navbar-brand .brand-text {
-    font-size: 0.82rem;
+    font-size: 0.9rem;
   }
 
   .navbar-brand img {
     height: 50px;
     width: 50px;
   }
+
+
+  .product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1rem 3rem;
+    width: 100%;
+  }
+
+  .product-gallery {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .image-wrapper {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 12px;
+    margin: 0 auto;
+  }
+
+  .thumbnail-container {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .product-info {
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .category {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-title {
+    text-align: center;
+  }
+
+  .product-subtitle {
+    color: var(--gray);
+    text-align: center;
+    margin-bottom: 1.2rem;
+  }
+
+  .price-container {
+    margin: 1.5rem auto;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .stock {
+    justify-content: center;
+    margin-top: 0.8rem;
+  }
+
+  .variants {
+    text-align: center;
+    margin: 1.5rem 0;
+    width: 100%;
+  }
+
+  .variant-title {
+    margin-bottom: 0.8rem;
+  }
+
+  .variant-options {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .features {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .feature {
+    justify-content: center;
+  }
+
+
+  .mobile-accordion {
+    width: 100%;
+    padding: 0;
+    margin-top: 2rem;
+  }
+
+  .accordion-toggle {
+    font-size: 1rem;
+    padding: 1rem;
+    color: var(--accent); /* azul estilo Amazon */
+    text-align: left;
+  }
+
+  .accordion-content {
+    padding: 0.5rem 1rem 1rem;
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  .accordion-toggle::after {
+    content: '▼';
+    position: absolute;
+    right: 1rem;
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+  }
+
+  .accordion-toggle.active::after {
+    transform: rotate(180deg);
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid #a39c9c;
+  }
+
+  .accordion-toggle {
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background: none;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    color: var(--accent); /* color azul que ya usas en tabs */
+  }
+
+  .accordion-toggle::after {
+    content: '▼';
+    position: absolute;
+    right: 1rem;
+    transition: transform 0.3s ease;
+    color: #f5f5f5;
+  }
+
+  .accordion-toggle.active::after {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+    padding: 0 0;
+    font-size: 0.9rem;
+  }
+
+  .accordion-content.active {
+    max-height: 1000px; /* suficientemente alto para cualquier contenido */
+    opacity: 1;
+    padding: 0.5rem 0 1rem;
+  }
+
+  .specs-grid {
+    grid-template-columns: 1fr, 1fr;
+    gap: 0.5rem;
+  }
+
+.video-container {
+ margin-top: 80px;
+}
+.back-btn {
+margin-top: 2rem;
+padding-bottom: 5rem;
+}
+
+.back-btn i {
+  margin-right: 8px;
+  transition: transform 0.2s;
+}
 
       .footer-container {
     display: flex;
@@ -1567,6 +1890,25 @@
 
 
 
-@media (max-width: 340px) {
+@media (max-width: 400px) {
 
+  .price-container > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .discount {
+    display: inline-block;
+    width: auto;
+    margin: 0 auto;
+    margin-top: 0.3rem;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 8px;
+    order: 3; /* Asegura que quede debajo */
+  }
 }

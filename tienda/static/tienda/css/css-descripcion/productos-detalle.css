@@ -38,7 +38,9 @@ body {
 
 /* Navbar principal - Estilo negro con verde */
 /* -------------------------------------------------------------------------------------------------------------- */
-
+  .mobile-accordion {
+    display: none;
+  }
 
 
 #navbar-mobile {
@@ -482,16 +484,6 @@ body {
   font-weight: 400;
 }
 
-.rating {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.stars {
-  color: #ffc107;
-  margin-right: 10px;
-}
 
 .review-count {
   color: var(--gray);
@@ -672,11 +664,12 @@ body {
   font-weight: 500;
 }
 
-/* Video Section */
 .video-container {
-  margin: 3rem 0;
+  margin: 3rem auto;
+  max-width: 100%;
+  width: 100%; /* Usar todo el ancho disponible */
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio correcto */
   height: 0;
   overflow: hidden;
   border-radius: 12px;
@@ -690,8 +683,8 @@ body {
   width: 100%;
   height: 100%;
   border: none;
+  display: block;
 }
-
 /* Back Button */
 .back-btn {
   display: inline-flex;
