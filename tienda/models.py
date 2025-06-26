@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 
 class Categoria(models.Model):
@@ -44,7 +45,7 @@ class Producto(models.Model):
         max_length=100,
         help_text="Ej: En stock, Últimas 3 unidades, Agotado"
     )
-    imagen = models.ImageField(upload_to='productos/')
+    imagen = CloudinaryField('imagen', blank=True, null=True)  # CAMBIO
     etiqueta = models.CharField(
         max_length=50,
         blank=True,
@@ -62,7 +63,7 @@ class Producto(models.Model):
 
 class ImagenProducto(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name="galeria")
-    imagen = models.ImageField(upload_to='galeria_productos/')
+    imagen = CloudinaryField('galeria', blank=True, null=True)  # CAMBIO
 
     def __str__(self):
         return f"Imagen de {self.producto.nombre}"
@@ -90,7 +91,6 @@ class DescripcionProducto(models.Model):
         blank=True,
         help_text="Texto completo con beneficios y detalles. Usa doble enter para párrafos."
     )
-    # Eliminamos especificaciones
     accesorios = models.TextField(
         blank=True,
         help_text="Accesorios compatibles u opcionales. Usa doble enter para separar líneas"
@@ -130,7 +130,6 @@ class VarianteProducto(models.Model):
         return f"{self.nombre} - {self.descripcion.producto.nombre}"
 
 
-# NUEVO modelo: Especificaciones técnicas como ítems individuales
 class EspecificacionProducto(models.Model):
     descripcion = models.ForeignKey(
         DescripcionProducto,
