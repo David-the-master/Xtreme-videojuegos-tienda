@@ -1,14 +1,16 @@
 from pathlib import Path
 import os
 
+
+# Base
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-#x_17^c(0sz)x2isek!knq--$kqt2^@&q$xv_lw-o(3o4n016x'
+# Seguridad
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-#x_17^c(0sz)x2isek!knq--$kqt2^@&q$xv_lw-o(3o4n016x')
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = ['*']  # Cambia esto en producción si lo deseas
 
-DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
-
-ALLOWED_HOSTS = ['*']  # En producción cámbialo a ['xtreme-videojuegos-tienda.onrender.com']
-
+# Apps
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -17,11 +19,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tienda',
+
+    # Cloudinary
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
+# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ← necesario para servir estáticos en Render
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -32,6 +39,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'xtreme_project.urls'
 
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -50,6 +58,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'xtreme_project.wsgi.application'
 
+# Base de datos
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -57,6 +66,7 @@ DATABASES = {
     }
 }
 
+# Validación de contraseñas
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -64,6 +74,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
+# Internacionalización
 LANGUAGE_CODE = 'es-co'
 TIME_ZONE = 'America/Bogota'
 USE_I18N = True
@@ -71,16 +82,19 @@ USE_TZ = True
 
 # Archivos estáticos
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'tienda/static'),
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'tienda/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# WhiteNoise para servir archivos en producción
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Archivos subidos por el usuario
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Archivos media (con Cloudinary)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+# Cloudinary configuración
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'deaqrk0xc'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '817734961475167'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '0qXrpUGQ9xwgraNSxn0XKabkzks'),
+}
+
+# Auto Field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
