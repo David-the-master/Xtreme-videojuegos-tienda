@@ -1892,23 +1892,29 @@ padding-bottom: 5rem;
 
 @media (max-width: 400px) {
 
-  .price-container > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    text-align: center;
-  }
-
-  .discount {
-    display: inline-block;
-    width: auto;
-    margin: 0 auto;
-    margin-top: 0.3rem;
-    font-size: 0.75rem;
-    padding: 4px 10px;
-    border-radius: 8px;
-    order: 3; /* Asegura que quede debajo */
-  }
+.price-container > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra el contenedor en sí */
+  text-align: left; /* Evita que el texto se centre */
 }
+
+.price-container > div > *:not(.discount) {
+  text-align: left;
+  flex: 0 0 auto; /* Que no se expandan */
+}
+
+.discount {
+  display: inline-block;
+  width: auto;
+  margin-top: 0.3rem;
+  font-size: 0.5rem;
+  padding: 2px 4px;
+  border-radius: 6px;
+  order: 3; /* Siempre debajo */
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto; /* Centrado */
+}
+}
+

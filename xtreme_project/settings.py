@@ -1,15 +1,14 @@
 from pathlib import Path
-import os  # ← Necesario para MEDIA_ROOT
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-#x_17^c(0sz)x2isek!knq--$kqt2^@&q$xv_lw-o(3o4n016x'
 
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # Reemplazar por ['tu-app.onrender.com'] en producción
 
-# Aplicaciones instaladas
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -17,10 +16,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tienda',  # Tu app personalizada
+    'tienda',
 ]
 
-# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -33,15 +31,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'xtreme_project.urls'
 
-# Plantillas (Templates)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  # Si luego agregas templates globales
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',  # ← Faltaba esta
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -52,7 +49,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'xtreme_project.wsgi.application'
 
-# Base de datos (SQLite por ahora)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -60,7 +56,6 @@ DATABASES = {
     }
 }
 
-# Validación de contraseñas
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -76,19 +71,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Configuración regional
 LANGUAGE_CODE = 'es-co'
 TIME_ZONE = 'America/Bogota'
 USE_I18N = True
 USE_TZ = True
 
-# Archivos estáticos
 STATIC_URL = '/static/'
-STATICFILES_DIRS = []  # Usas static/tienda/ por ahora
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'tienda/static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Archivos multimedia (para imágenes subidas por usuarios)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Campo por defecto para claves primarias
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
