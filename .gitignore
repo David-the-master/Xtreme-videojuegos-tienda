@@ -22,7 +22,7 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Archivos estáticos y de medios (si los generas en producción)
+# Archivos estáticos y de medios (generados en producción)
 staticfiles/
 media/
 
