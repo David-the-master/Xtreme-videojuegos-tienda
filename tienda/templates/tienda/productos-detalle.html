@@ -1,5 +1,6 @@
 {% load static %}
 {% load formato_precio %}
+{% load markdown_filters %}
 
 <!DOCTYPE html>
 <html lang="es">
@@ -180,7 +181,6 @@
 <main>
   <section>
     <div class="container">
-
       <div class="product-container">
         <!-- Galería -->
         <div class="product-gallery">
@@ -248,7 +248,6 @@
             </div>
           </div>
 
-
           {% if variantes %}
           <div class="variants">
             <h3 class="variant-title">Versiones Disponibles:</h3>
@@ -275,11 +274,9 @@
 
           <p id="sku-variante" class="sku-info">SKU: {{ producto.sku }}</p>
 
-
-
           {% if producto.detalle.caracteristicas %}
             <div class="features">
-              {{ producto.detalle.caracteristicas|linebreaks }}
+              {{ producto.detalle.caracteristicas|saltos_html|safe }}
             </div>
           {% endif %}
         </div>
@@ -290,19 +287,57 @@
         <div class="tab-header">
           <button class="tab-btn active" data-tab="description">Descripción</button>
           <button class="tab-btn" data-tab="specs">Especificaciones</button>
-          <button class="tab-btn" data-tab="reviews">Reseñas</button>
           <button class="tab-btn" data-tab="accessories">Accesorios</button>
         </div>
 
-        <div class="tab-content active" id="description">
+        <div class="tab-content active descripcion-markdown" id="description">
           {% if producto.detalle.descripcion_larga %}
-            {{ producto.detalle.descripcion_larga|linebreaks }}
+            {{ producto.detalle.descripcion_larga|saltos_html|safe }}
           {% else %}
             <p>Este producto aún no tiene descripción detallada.</p>
           {% endif %}
         </div>
 
-          <div class="tab-content" id="specs">
+        <div class="tab-content" id="specs">
+          {% if producto.detalle.especificaciones.all %}
+            <div class="specs-grid">
+              {% for espec in producto.detalle.especificaciones.all %}
+                <div class="spec-item">
+                  <div class="spec-title">{{ espec.titulo }}</div>
+                  <div class="spec-value">{{ espec.valor }}</div>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p>No se han especificado las características técnicas.</p>
+          {% endif %}
+        </div>
+
+        <div class="tab-content" id="accessories">
+          {% if producto.detalle.accesorios %}
+            {{ producto.detalle.accesorios|saltos_html|safe }}
+          {% else %}
+            <p>No hay accesorios adicionales registrados.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Acordeón solo para móviles -->
+      <div class="mobile-accordion">
+        <div class="accordion-item">
+          <button class="accordion-toggle">Descripción</button>
+          <div class="accordion-content">
+            {% if producto.detalle.descripcion_larga %}
+              {{ producto.detalle.descripcion_larga|saltos_html|safe }}
+            {% else %}
+              <p>Este producto aún no tiene descripción detallada.</p>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-toggle">Especificaciones</button>
+          <div class="accordion-content">
             {% if producto.detalle.especificaciones.all %}
               <div class="specs-grid">
                 {% for espec in producto.detalle.especificaciones.all %}
@@ -316,60 +351,19 @@
               <p>No se han especificado las características técnicas.</p>
             {% endif %}
           </div>
+        </div>
 
-        <div class="tab-content" id="accessories">
-          {% if producto.detalle.accesorios %}
-            {{ producto.detalle.accesorios|linebreaks }}
-          {% else %}
-            <p>No hay accesorios adicionales registrados.</p>
-          {% endif %}
+        <div class="accordion-item">
+          <button class="accordion-toggle">Accesorios</button>
+          <div class="accordion-content">
+            {% if producto.detalle.accesorios %}
+              {{ producto.detalle.accesorios|saltos_html|safe }}
+            {% else %}
+              <p>No hay accesorios adicionales registrados.</p>
+            {% endif %}
+          </div>
         </div>
       </div>
- 
-
-
-        <!-- Acordeón solo para móviles -->
-        <div class="mobile-accordion">
-          <div class="accordion-item">
-            <button class="accordion-toggle">Descripción</button>
-            <div class="accordion-content">
-              {% if producto.detalle.descripcion_larga %}
-                {{ producto.detalle.descripcion_larga|linebreaks }}
-              {% else %}
-                <p>Este producto aún no tiene descripción detallada.</p>
-              {% endif %}
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-toggle">Especificaciones</button>
-            <div class="accordion-content">
-              {% if producto.detalle.especificaciones.all %}
-                <div class="specs-grid">
-                  {% for espec in producto.detalle.especificaciones.all %}
-                    <div class="spec-item">
-                      <div class="spec-title">{{ espec.titulo }}</div>
-                      <div class="spec-value">{{ espec.valor }}</div>
-                    </div>
-                  {% endfor %}
-                </div>
-              {% else %}
-                <p>No se han especificado las características técnicas.</p>
-              {% endif %}
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-toggle">Accesorios</button>
-            <div class="accordion-content">
-              {% if producto.detalle.accesorios %}
-                {{ producto.detalle.accesorios|linebreaks }}
-              {% else %}
-                <p>No hay accesorios adicionales registrados.</p>
-              {% endif %}
-            </div>
-          </div>
-        </div>
 
       <!-- Video -->
       {% if producto.detalle.video_url %}
@@ -377,14 +371,16 @@
           <iframe src="{{ producto.detalle.video_url }}" frameborder="0" allowfullscreen></iframe>
         </div>
       {% endif %}
+
       <!-- Botón volver -->
       <a href="{% url 'productos' %}" class="back-btn">
         <i class="fas fa-arrow-left"></i>
         Volver a todos los productos
       </a>
-   </div>
+    </div>
   </section>
 </main>
+
 
 
 

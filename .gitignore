@@ -1,46 +1,72 @@
-# Entornos virtuales
+# ==========================
+# 🐍 ENTORNOS VIRTUALES
+# ==========================
 env/
 venv/
 
-# Archivos y carpetas de Python
+# ==========================
+# 🐍 ARCHIVOS PYTHON
+# ==========================
 __pycache__/
 *.py[cod]
 *.so
 
-# Archivos de migraciones compiladas
+# ==========================
+# 📦 MIGRACIONES COMPILADAS
+# ==========================
 **/migrations/*.pyc
 **/migrations/__pycache__/
 
-# Archivos temporales y de sistema
+# ==========================
+# 🛠 TEMPORALES / SISTEMA
+# ==========================
 *.log
 *.swp
 *.tmp
 .DS_Store
 Thumbs.db
 
-# Configuraciones de editores
+# ==========================
+# ⚙️ CONFIGS DE EDITORES
+# ==========================
 .vscode/
 .idea/
 
-# Archivos estáticos y de medios (generados en producción)
+# ==========================
+# 🗃️ ARCHIVOS DE BASE DE DATOS
+# ==========================
+db.sqlite3
+*.sqlite3
+
+# ==========================
+# 🖼️ ARCHIVOS MEDIA/STATIC
+# ==========================
 staticfiles/
 media/
 
-# Archivos compilados de frontend
+# ==========================
+# 💻 FRONTEND COMPILADO
+# ==========================
 node_modules/
 dist/
 build/
 
-# Variables de entorno y configuraciones sensibles
+# ==========================
+# 🔒 VARIABLES DE ENTORNO
+# ==========================
 .env
 *.env
 
-# Archivos de cobertura de tests
+# ==========================
+# 🧪 TEST / COBERTURA
+# ==========================
 htmlcov/
 .coverage
 .coverage.*
 
-# Archivos de caché
+# ==========================
+# 💾 CACHÉ Y OTROS
+# ==========================
 *.bak
 *.cache
 *.tgz

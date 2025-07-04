@@ -325,9 +325,14 @@ body {
   z-index: 10;
 }
 
+.descripcion-markdown p {
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
 
-
-
+.descripcion-markdown br {
+  display: inline;
+}
 
 .container {
   max-width: 1400px;

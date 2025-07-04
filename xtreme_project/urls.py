@@ -8,5 +8,6 @@ urlpatterns = [
     path('', include('tienda.urls')),
 ]
 
-# ✅ Sirve archivos de media incluso en producción (temporalmente)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Solo sirve archivos media cuando estás en desarrollo (runserver)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

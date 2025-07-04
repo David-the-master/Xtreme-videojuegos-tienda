@@ -1,6 +1,4 @@
 from django.db import models
-from cloudinary.models import CloudinaryField
-
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
@@ -45,7 +43,7 @@ class Producto(models.Model):
         max_length=100,
         help_text="Ej: En stock, Últimas 3 unidades, Agotado"
     )
-    imagen = CloudinaryField('imagen', blank=True, null=True)  # CAMBIO
+    imagen = models.ImageField(upload_to='productos/', blank=True, null=True)
     etiqueta = models.CharField(
         max_length=50,
         blank=True,
@@ -63,7 +61,7 @@ class Producto(models.Model):
 
 class ImagenProducto(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name="galeria")
-    imagen = CloudinaryField('galeria', blank=True, null=True)  # CAMBIO
+    imagen = models.ImageField(upload_to='galeria/', blank=True, null=True)
 
     def __str__(self):
         return f"Imagen de {self.producto.nombre}"
